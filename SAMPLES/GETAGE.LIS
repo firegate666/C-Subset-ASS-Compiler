@@ -1,0 +1,95 @@
+
+Source file: GETAGE.X68
+Assembled on: 03-01-09 at: 10:15:11
+          by: X68K PC-2.1 Copyright (c) University of Teesside 1989,93
+Defaults: ORG $0/FORMAT/OPT A,BRL,CEX,CL,FRL,MC,MD,NOMEX,NOPCO
+
+    1  00001000                        ORG       $1000
+    2  00001000 227C000010F0           MOVEA.L   #STRVAR0,A1
+    3  00001006 323C001A               MOVE.W    #(STRVAR1-STRVAR0),D1
+    4  0000100A 103C0001               MOVE.B    #PRTSTR,D0
+    5  0000100E 4E4F                   TRAP      #15
+    6  00001010 103C0004               MOVE.B    #NUMIN,D0
+    7  00001014 4E4F                   TRAP      #15
+    8  00001016 23C1000010E8           MOVE.L    D1,MAXCOUNT
+    9  0000101C              DWB_0:              
+   10  0000101C 227C000010E0           MOVEA.L   #MYINT,A1
+   11  00001022 323C0012               MOVE.W    #(STRVAR2-STRVAR1),D1
+   12  00001026 103C0001               MOVE.B    #PRTSTR,D0
+   13  0000102A 4E4F                   TRAP      #15
+   14  0000102C 227C0000110A           MOVEA.L   #STRVAR1,A1
+   15  00001032 323C0005               MOVE.W    #(STRVAR3-STRVAR2),D1
+   16  00001036 103C0001               MOVE.B    #PRTSTR,D0
+   17  0000103A 4E4F                   TRAP      #15
+   18  0000103C 2039000010E4           MOVE.L    COUNT,D0
+   19  00001042 5280                   ADD.L     #1,D0
+   20  00001044 23C0000010E4           MOVE.L    D0,COUNT
+   21  0000104A 203C00000002           MOVE.L    #2,D0
+   22  00001050 0C8000000002           CMP.L     #2,D0
+   23  00001056              WB_2:               
+   24  00001056 6600003A               BNE       WE_3
+   25  0000105A 227C0000111C           MOVEA.L   #STRVAR2,A1
+   26  00001060 323C0001               MOVE.W    #(STRVAR4-STRVAR3),D1
+   27  00001064 103C0001               MOVE.B    #PRTSTR,D0
+   28  00001068 4E4F                   TRAP      #15
+   29  0000106A 203C00000002           MOVE.L    #2,D0
+   30  00001070 0C8000000002           CMP.L     #2,D0
+   31  00001076              WB_4:               
+   32  00001076 66000016               BNE       WE_5
+   33  0000107A 227C00001121           MOVEA.L   #STRVAR3,A1
+   34  00001080 323C0004               MOVE.W    #(STRVAR5-STRVAR4),D1
+   35  00001084 103C0001               MOVE.B    #PRTSTR,D0
+   36  00001088 4E4F                   TRAP      #15
+   37  0000108A 4EF81076               JMP       WB_4
+   38  0000108E              WE_5:               
+   39  0000108E 4EF81056               JMP       WB_2
+   40  00001092              WE_3:               
+   41  00001092 2039000010E4           MOVE.L    COUNT,D0
+   42  00001098 B0B9000010E8           CMP.L     MAXCOUNT,D0
+   43  0000109E 66000006               BNE       DWE_1
+   44  000010A2 4EF8101C               JMP       DWB_0
+   45  000010A6              DWE_1:              
+   46  000010A6 2039000010EC           MOVE.L    MAXINT,D0
+   47  000010AC 0C8000000011           CMP.L     #17,D0
+   48  000010B2 66000018               BNE       EB_6
+   49  000010B6 227C00001122           MOVEA.L   #STRVAR4,A1
+   50  000010BC 323C0006               MOVE.W    #(STRVAR6-STRVAR5),D1
+   51  000010C0 103C0001               MOVE.B    #PRTSTR,D0
+   52  000010C4 4E4F                   TRAP      #15
+   53  000010C6 4EF9000010DC           JMP       EE_7
+   54  000010CC              EB_6:               
+   55  000010CC 227C00001126           MOVEA.L   #STRVAR5,A1
+   56  000010D2 323C0004               MOVE.W    #(STRVAR7-STRVAR6),D1
+   57  000010D6 103C0001               MOVE.B    #PRTSTR,D0
+   58  000010DA 4E4F                   TRAP      #15
+   59  000010DC              EE_7:               
+   60  000010DC 4E722700               STOP      #$2700
+   61                        * BEGIN PRINTF-DECLARE
+   62           00000000     PRTSTRCLRLF: EQU       0
+   63           00000001     PRTSTR:   EQU       1
+   64           00000004     NUMIN:    EQU       4
+   65           00000003     NUMOUT:   EQU       3
+   66                        * END PRINTF_DECLARE
+   67                        * BEGIN VAR-DECLARE
+   68  000010E0 FFFFFFF1     MYINT:    DC.L      -15
+   69  000010E4 FFFFFFFB     COUNT:    DC.L      -5
+   70  000010E8 00000002     MAXCOUNT: DC.L      2
+   71  000010EC 00000002     MAXINT:   DC.L      2
+   72  000010F0 486965722062 STRVAR0:  DC.B      'Hier beginnt das Programm.'
+                6567696E6E74
+                206461732050
+                726F6772616D
+                6D2E        
+   73  0000110A 496E74656765 STRVAR1:  DC.B      'Integerkonstante: '
+                726B6F6E7374
+                616E74653A20
+   74  0000111C 48616C6C6F   STRVAR2:  DC.B      'Hallo'
+   75  00001121 37           STRVAR3:  DC.B      '7'
+   76  00001122 4A414121     STRVAR4:  DC.B      'JAA!'
+   77  00001126 4E65696E2121 STRVAR5:  DC.B      'Nein!!'
+   78  0000112C 4A414121     STRVAR6:  DC.B      'JAA!'
+   79  00001130 4E65696E2121 STRVAR7:  DC.B      'Nein!!'
+   80                        * END VAR-DECLARE
+   81           00001000               END       $1000
+
+Lines: 81, Errors: 0, Warnings: 0.

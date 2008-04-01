@@ -1,0 +1,38 @@
+FINISHED!!!
+
+PROJECT MB ebenfalls aus dem Repository holen und in BuildPath und ProjectReferences einbauen
+
+ERROR: Assemblergenerierung kann bei Printf nix mit Ausdrücken wie
+       1+2*3 bzw. in PTF 123*+ anfangen
+       Lösungsvorschlag: Vorher evaluieren.
+
+ERROR: Meine Windows 2000 Workstation auf der Arbeit stürzt mit Reboot ab,
+       wenn ich das Programm starte. Reproduzierbar. Fehler kann aber nicht
+       lokalisiert werden :(
+
+TODO Linebreak im String
+TODO CompilerError in Status Fenster
+TODO Laden von Zwischenprodukten
+TODO Kapselung TabbedPane
+TODO Scannerreset funktioniert nicht bei Abbruch durch Exception
+TODO Falsche Parameterfolgen in printf(a,b,c) -> c b a
+
+DONE FileDialog wirft Exception bei Cancel
+DONE Fehlermeldung bei Verwendung von not-Assigned Variables
+DONE Fehlermeldung bei ungenutzten Variablen
+DONE Strings werden extrahiert und durch IDENTIFIER ersetzt
+DONE FileDialog für Speichern
+DONE Symboltabelle Assign bei Deklaration
+DONE CIPMenu ausgegliedert
+DONE Erzeugen von 68k Assembler-code
+DONE Info Dialog
+DONE Speichern und öffnen jetzt mehrfach möglich, Scanner läuft auch beim zweiten Mal durch
+DONE Scanner Reset, wenn neue Datei geöffnet wird
+DONE SourceCode Fenster mit Zeilenumerierung
+DONE mehrere Fenster für verschiedene Ausgaben (JTabbedPane)
+DONE Speichern von Zwischenergebnissen
+DONE *.c FileFilter implementiert
+DONE Symboltabelle as JTable
+DONE System.out auskommentiert
+DONE Outputfenster entleeren, wenn neue Datei geöffnet wird
+DONE Linebreak am Ende eines Strings

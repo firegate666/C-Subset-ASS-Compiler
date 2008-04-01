@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="javadoc" name="CIP">
+    <target name="javadoc">
+        <javadoc access="public" author="true"
+            classpath="Z:\winxp\eclipse\CIP\bin"
+            destdir="Z:\winxp\eclipse\CIP\javadoc"
+            doctitle="C-Subset Compiler" nodeprecated="false"
+            nodeprecatedlist="false" noindex="false" nonavbar="false"
+            notree="false"
+            packagenames="de.mb.swing,de.mk.exception,de.haw.cip.examples.ea_idsi1,de.haw.cip.io,de.haw.cip.logic,de.haw.cip.logic.semanticanalysis,de.mb.swing.actions,de.haw.cip.gui,de.mk.swing,de.haw.cip.logic.syntaxanalysis,de.mb.exception,de.haw.cip.examples,de.haw.cip.gui.actions,de.haw.cip.util,de.haw.cip.logic.scanner,de.haw.cip,de.haw.cip.examples.parity,de.mb.util"
+            sourcepath="Z:\winxp\eclipse\CIP\src" splitindex="true"
+            use="true" version="true"/>
+    </target>
+</project>

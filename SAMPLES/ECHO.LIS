@@ -1,0 +1,45 @@
+
+Source file: ECHO.X68
+Assembled on: 03-01-09 at: 09:36:57
+          by: X68K PC-2.1 Copyright (c) University of Teesside 1989,93
+Defaults: ORG $0/FORMAT/OPT A,BRL,CEX,CL,FRL,MC,MD,NOMEX,NOPCO
+
+    1                        *       Program Name : Untitled
+    2                        *       Author       : Greg Colley
+    3                        *       Date         : 23/11/1998
+    4                        *       Time         : 1:20:41 AM
+    5                        *       This program echoes characters entered from the keyboard
+    6                        *       Location Declarations
+    7                        
+    8                                               
+    9  00007000                        ORG       $7000
+   10                        *  LOAD $7000
+   11                        
+   12           00010040     TRMSTAT:  EQU       $10040                ;;TERMINAL STATUS REGISTER
+   13           00010042     TRMDATA:  EQU       $10042                ;;TERMINAL DATA REGISTERS
+   14           00007000     START:    EQU       *
+   15  00007000 3E7C7000               MOVE      #START,SP
+   16                        *  INPUT   CHARACTER
+   17           00007004     INPOLL:   EQU       *
+   18  00007004 083900000001           BTST      #0,TRMSTAT
+                0040        
+   19  0000700C 67F6                   BEQ       INPOLL                ;;WAIT UNTIL CHARACTER AVAILABLE
+   20  0000700E 163900010042           MOVE.B    TRMDATA,D3            ;;INPUT CHARACTER INTO D3
+   21  00007014 0C030000               CMP.B     #$0,D3
+   22  00007018 67000014               BEQ       DONE                  ;;DONE IF RETURN ENTERED
+   23                        *  OUTPUT  CHARACTER
+   24                        
+   25           0000701C     OUTPOLL:  EQU       *
+   26  0000701C 083900010001           BTST      #1,TRMSTAT
+                0040        
+   27  00007024 67F6                   BEQ       OUTPOLL               ;;WAIT FOR OUTPUT READY
+   28  00007026 13C300010042           MOVE.B    D3,TRMDATA            ;;OUTPUT CHARACTER IN D3
+   29  0000702C 60D6                   BRA       INPOLL                ;;GET NEXT CHARACTER
+   30           0000702E     DONE:     EQU       *
+   31  0000702E 4EF9EEEEEEEE           JMP       $EEEEEEEE             ;;ILLEGAL BRANCH FOR STOP
+   32                        
+   33  00007034 4E722700               STOP      #$2700                ;Stop the program
+   34                        
+   35           00001000               END       $1000                 ;End of assembly
+
+Lines: 35, Errors: 0, Warnings: 0.

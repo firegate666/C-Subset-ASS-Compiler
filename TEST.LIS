@@ -1,0 +1,148 @@
+
+Source file: TEST.X68
+Assembled on: 03-01-15 at: 11:44:36
+          by: X68K PC-2.1 Copyright (c) University of Teesside 1989,93
+Defaults: ORG $0/FORMAT/OPT A,BRL,CEX,CL,FRL,MC,MD,NOMEX,NOPCO
+
+    1                        * Programmstart
+    2  00001000                        ORG       $1000
+    3                        * PRINTANWEISUNG
+    4  00001000 227C00001140           MOVEA.L   #STRVAR0,A1
+    5  00001006 323C0019               MOVE.W    #(STRVAR1-STRVAR0),D1
+    6  0000100A 103C0001               MOVE.B    #PRTSTR,D0
+    7  0000100E 4E4F                   TRAP      #15
+    8                        * SCANANWEISUNG
+    9  00001010 103C0004               MOVE.B    #NUMIN,D0
+   10  00001014 4E4F                   TRAP      #15
+   11  00001016 33C10000113E           MOVE.W    D1,EINGABE
+   12  0000101C 30390000113E           MOVE.W    EINGABE,D0
+   13  00001022 0C400000               CMP.W     #0,D0
+   14  00001026 6F000018               BLE       EB_0
+   15                        * PRINTANWEISUNG
+   16  0000102A 227C00001159           MOVEA.L   #STRVAR1,A1
+   17  00001030 323C0021               MOVE.W    #(STRVAR2-STRVAR1),D1
+   18  00001034 103C0000               MOVE.B    #PRTSTRCLRLF,D0
+   19  00001038 4E4F                   TRAP      #15
+   20  0000103A 4EF900001074           JMP       EE_1
+   21  00001040              EB_0:               
+   22  00001040 30390000113E           MOVE.W    EINGABE,D0
+   23  00001046 0C400000               CMP.W     #0,D0
+   24  0000104A 66000018               BNE       EB_2
+   25                        * PRINTANWEISUNG
+   26  0000104E 227C0000117A           MOVEA.L   #STRVAR2,A1
+   27  00001054 323C0004               MOVE.W    #(STRVAR3-STRVAR2),D1
+   28  00001058 103C0000               MOVE.B    #PRTSTRCLRLF,D0
+   29  0000105C 4E4F                   TRAP      #15
+   30  0000105E 4EF900001074           JMP       EE_3
+   31  00001064              EB_2:               
+   32                        * PRINTANWEISUNG
+   33  00001064 227C0000117E           MOVEA.L   #STRVAR3,A1
+   34  0000106A 323C002F               MOVE.W    #(STRVAR4-STRVAR3),D1
+   35  0000106E 103C0000               MOVE.B    #PRTSTRCLRLF,D0
+   36  00001072 4E4F                   TRAP      #15
+   37  00001074              EE_3:               
+   38  00001074              EE_1:               
+   39  00001074 33FC00030000           MOVE.W    #3,ZAHL1
+                1138        
+   40  0000107C 33FC00020000           MOVE.W    #2,ZAHL2
+                113A        
+   41  00001084 303900001138           MOVE.W    ZAHL1,D0
+   42  0000108A 90790000113A           SUB.W     ZAHL2,D0
+   43  00001090 C1F90000113E           MULS      EINGABE,D0
+   44  00001096 81FC0002               DIVS      #2,D0
+   45  0000109A 33C00000113C           MOVE.W    D0,ERGEBNIS
+   46                        * PRINTANWEISUNG
+   47  000010A0 227C000011AD           MOVEA.L   #STRVAR4,A1
+   48  000010A6 323C0011               MOVE.W    #(STRVAR5-STRVAR4),D1
+   49  000010AA 103C0001               MOVE.B    #PRTSTR,D0
+   50  000010AE 4E4F                   TRAP      #15
+   51                        * PRINTANWEISUNG
+   52  000010B0 32390000113C           MOVE.W    ERGEBNIS,D1
+   53  000010B6 103C0003               MOVE.B    #NUMOUT,D0
+   54  000010BA 4E4F                   TRAP      #15
+   55                        * PRINTANWEISUNG
+   56  000010BC 227C000011BE           MOVEA.L   #STRVAR5,A1
+   57  000010C2 323C0001               MOVE.W    #(STRVAR6-STRVAR5),D1
+   58  000010C6 103C0000               MOVE.B    #PRTSTRCLRLF,D0
+   59  000010CA 4E4F                   TRAP      #15
+   60  000010CC              DWB_4:              
+   61  000010CC 33FC00020000           MOVE.W    #2,ZAHL2
+                113A        
+   62  000010D4              WB_6:               
+   63  000010D4 30390000113A           MOVE.W    ZAHL2,D0
+   64  000010DA 0C400000               CMP.W     #0,D0
+   65  000010DE 6F000024               BLE       WE_7
+   66                        * PRINTANWEISUNG
+   67  000010E2 227C000011BF           MOVEA.L   #STRVAR6,A1
+   68  000010E8 323C001A               MOVE.W    #(STRVAR7-STRVAR6),D1
+   69  000010EC 103C0000               MOVE.B    #PRTSTRCLRLF,D0
+   70  000010F0 4E4F                   TRAP      #15
+   71  000010F2 30390000113A           MOVE.W    ZAHL2,D0
+   72  000010F8 5340                   SUB.W     #1,D0
+   73  000010FA 33C00000113A           MOVE.W    D0,ZAHL2
+   74  00001100 4EF810D4               JMP       WB_6
+   75  00001104              WE_7:               
+   76                        * PRINTANWEISUNG
+   77  00001104 227C000011D9           MOVEA.L   #STRVAR7,A1
+   78  0000110A 323C001A               MOVE.W    #(STRVAR8-STRVAR7),D1
+   79  0000110E 103C0000               MOVE.B    #PRTSTRCLRLF,D0
+   80  00001112 4E4F                   TRAP      #15
+   81  00001114 303900001138           MOVE.W    ZAHL1,D0
+   82  0000111A 5340                   SUB.W     #1,D0
+   83  0000111C 33C000001138           MOVE.W    D0,ZAHL1
+   84  00001122 303900001138           MOVE.W    ZAHL1,D0
+   85  00001128 0C400000               CMP.W     #0,D0
+   86  0000112C 6F000006               BLE       DWE_5
+   87  00001130 4EF810CC               JMP       DWB_4
+   88  00001134              DWE_5:              
+   89  00001134 4E722700               STOP      #$2700
+   90                        * BEGIN PRINTF-DECLARE
+   91           00000000     PRTSTRCLRLF: EQU       0
+   92           00000001     PRTSTR:   EQU       1
+   93           00000004     NUMIN:    EQU       4
+   94           00000003     NUMOUT:   EQU       3
+   95                        * END PRINTF_DECLARE
+   96                        * BEGIN VAR-DECLARE
+   97  00001138 0000         ZAHL1:    DC.W      0
+   98  0000113A 0000         ZAHL2:    DC.W      0
+   99  0000113C 0000         ERGEBNIS: DC.W      0
+  100  0000113E 0000         EINGABE:  DC.W      0
+  101  00001140 476562656E20 STRVAR0:  DC.B      'Geben Sie eine Zahl ein: '
+                536965206569
+                6E65205A6168
+                6C2065696E3A
+                20          
+  102  00001159 446965206569 STRVAR1:  DC.B      'Die eingegebene Zahl ist positiv.'
+                6E6765676562
+                656E65205A61
+                686C20697374
+                20706F736974
+                69762E      
+  103  0000117A 4E756C6C     STRVAR2:  DC.B      'Null'
+  104  0000117E 446965206569 STRVAR3:  DC.B      'Die eingegebene Zahl ist kleiner oder gleich 0.'
+                6E6765676562
+                656E65205A61
+                686C20697374
+                206B6C65696E
+                6572206F6465
+                7220676C6569
+                636820302E  
+  105  000011AD 28332D32292A STRVAR4:  DC.B      '(3-2)*eingabe/2= '
+                65696E676162
+                652F323D20  
+  106  000011BE 20           STRVAR5:  DC.B      ' '
+  107  000011BF 44757263686C STRVAR6:  DC.B      'Durchlauf innere Schleife.'
+                61756620696E
+                6E6572652053
+                63686C656966
+                652E        
+  108  000011D9 44757263686C STRVAR7:  DC.B      'Durchlauf ‰uﬂere Schleife.'
+                61756620E475
+                DF6572652053
+                63686C656966
+                652E        
+  109  000011F3 2A           STRVAR8:  DC.B      '*'
+  110                        * END VAR-DECLARE
+  111           00001000               END       $1000
+
+Lines: 111, Errors: 0, Warnings: 0.
