@@ -37,7 +37,7 @@ testprogramm {
 			printf("Durchlauf innere Schleife.\n");
 			zahl2 = zahl2 -1;
 		};
-		printf("Durchlauf �u�ere Schleife.\n");
+		printf("Durchlauf äußere Schleife.\n");
 		zahl1 = zahl1 -1;
 	} while(zahl1 > 0);
 }
