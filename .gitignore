@@ -1,2 +1,6 @@
 bin
 templates
+build/
+build.xml
+nbproject
+
