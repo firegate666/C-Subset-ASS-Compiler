@@ -1,8 +1,8 @@
 package de.haw.cip.examples.ea_idsi1;
 
 /**
- * <p>Überschrift: Compiler & Interpreter Praktikum</p>
- * <p>Beschreibung: Compiler für Subset of Pascal</p>
+ * <p>Ãœberschrift: Compiler & Interpreter Praktikum</p>
+ * <p>Beschreibung: Compiler fÃ¼r Subset of Pascal</p>
  * <p>Copyright: Copyright (c) 2002</p>
  * <p>Organisation: </p>
  * @author unbekannt

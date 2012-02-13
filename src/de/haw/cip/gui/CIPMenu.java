@@ -32,9 +32,9 @@ import javax.swing.JMenuItem;
 public class CIPMenu {
 	private CIPWindow app;
 
-	// Hauptmenü
+	// HauptmenÃ¼
 	private JMenuBar menuBar;
-	// Menü: File
+	// MenÃ¼: File
 	private JMenu file;
 	private JMenuItem file_new;
 	private JMenuItem file_open;
@@ -43,7 +43,7 @@ public class CIPMenu {
 	private JMenuItem file_saveoutput;
 	private JMenuItem file_close;
 	private JMenuItem file_exit;
-	// Menü: Compiler
+	// MenÃ¼: Compiler
 	private JMenu compiler;
 	private JMenuItem compiler_all;
 	private JMenuItem compiler_lexicalanalysis;
@@ -51,10 +51,10 @@ public class CIPMenu {
 	private JMenuItem compiler_semanticalanalysis;
 	private JMenuItem compiler_codebuilder;
 
-	// Menü: Ansicht
+	// MenÃ¼: Ansicht
 	private CIPMenuAnsicht view;
 
-	// Menü: Hilfe
+	// MenÃ¼: Hilfe
 	private JMenu help;
 	private JMenuItem help_info;
 

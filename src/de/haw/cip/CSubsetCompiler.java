@@ -5,8 +5,8 @@ import de.haw.cip.gui.CIPWindow;
 import de.mk.exception.ExceptionHandler;
 
 /**
- * <p>�berschrift: Compiler & Interpreter Praktikum</p>
- * <p>Beschreibung: Compiler f�r Subset von C</p>
+ * <p>Überschrift: Compiler & Interpreter Praktikum</p>
+ * <p>Beschreibung: Compiler für Subset von C</p>
  * <p>Copyright: Copyright (c) 2002</p>
  * <p>Organisation: </p>
  * @author Martin Koose & Marco Behnke
