@@ -22,7 +22,7 @@ public class OpenFileAction extends AbstractAction {
 	private void sharedActions() throws CompilerErrorException {
 		//getApp().setScannerOutput("zieltext");
 		getApp().resetStatus();
-		getApp().printStatus( "Datei "+getApp().getSourceFile().getAbsolutePath()+" geöffnet." );
+		getApp().printStatus( "Datei "+getApp().getSourceFile().getAbsolutePath()+" geï¿½ffnet." );
 		getApp().getMenu().activateAllAnalysis();
 		getApp().getMenu().activateLexicalAnalysis();
 		getApp().getMenu().deactivateSyntaxAnalysis();
@@ -31,6 +31,7 @@ public class OpenFileAction extends AbstractAction {
 		//getApp().getScanner().resetScanner();
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		FileDialog fd = new FileDialog(Ressource_Bundle.getString("dialog_choosesourcefile"));
 		fd.setFileFilter( new CSourceFileFilter());

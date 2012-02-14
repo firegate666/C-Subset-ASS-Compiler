@@ -3,7 +3,6 @@ package de.haw.cip.examples.ea_idsi1;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import de.haw.cip.examples.ea_idsi1.*;
 
 import de.haw.cip.util.Prt;
 
@@ -16,6 +15,14 @@ public class Automaton { // Der IDSI-Automat
 	private State actState = null;
 	private String name = "noName";
 	private ArrayList buffer = new ArrayList();
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public Automaton(String n) { // Init auf Anfangszustand 
 		// => Erzeugung des Anfangszustandes      
@@ -39,6 +46,7 @@ public class Automaton { // Der IDSI-Automat
 			value = v;
 		}
 
+		@Override
 		public String toString() {
 			return String.valueOf(value);
 		}

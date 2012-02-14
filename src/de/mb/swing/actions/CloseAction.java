@@ -5,8 +5,8 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 
 /**
- * <p>Überschrift: Compiler & Interpreter Praktikum</p>
- * <p>Beschreibung: Compiler für Subset of Pascal</p>
+ * <p>Ãœberschrift: Compiler & Interpreter Praktikum</p>
+ * <p>Beschreibung: Compiler fÃ¼r Subset of Pascal</p>
  * <p>Copyright: Copyright (c) 2002</p>
  * <p>Organisation: </p>
  * @author unbekannt

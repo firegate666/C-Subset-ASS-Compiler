@@ -2,7 +2,6 @@ package de.haw.cip.gui;
 
 import de.haw.cip.logic.Symboltable;
 
-import javax.swing.DefaultCellEditor;
 import javax.swing.JTable;
 
 /**

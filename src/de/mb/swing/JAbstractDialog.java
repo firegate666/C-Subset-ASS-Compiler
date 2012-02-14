@@ -17,10 +17,6 @@ public abstract class JAbstractDialog extends Dialog {
     protected int _width;
     protected int _height;
 
-    public void show() {
-        super.show();
-    }
-
     private void initialize() {
         this.addWindowListener(new DialogListener());
         this.setBounds(this.x(), this.y(), _width, _height);
@@ -150,6 +146,7 @@ public abstract class JAbstractDialog extends Dialog {
         public DialogListener() {
             super();
         }
+		@Override
         public void windowClosing(WindowEvent e) {
             new DialogCloseAction(e);
         }

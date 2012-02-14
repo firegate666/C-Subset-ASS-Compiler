@@ -23,6 +23,7 @@ public class SyntaxAnalysisAction extends AbstractAction {
 	/**
 	 * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
 	 */
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
 			SyntaxAnalysis s = SyntaxAnalysis.getInstance();

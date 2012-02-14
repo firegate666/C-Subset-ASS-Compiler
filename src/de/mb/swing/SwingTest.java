@@ -21,12 +21,17 @@ public class SwingTest {
             public ClickButtonListener(JNumberedTextArea n) {
                 _n = n;
             }
+			@Override
             public void mouseClicked(MouseEvent e) {
                 _n.switchVisibleLineCount();
             }
+			@Override
             public void mouseEntered(MouseEvent e) {}
+			@Override
             public void mouseExited(MouseEvent e) {}
+			@Override
             public void mousePressed(MouseEvent e) {}
+			@Override
             public void mouseReleased(MouseEvent e) {}
         }
         JDefaultFrame jdf = new JDefaultFrame();

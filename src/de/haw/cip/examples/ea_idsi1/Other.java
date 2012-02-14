@@ -2,7 +2,7 @@ package de.haw.cip.examples.ea_idsi1;
 
 import de.haw.cip.util.Prt;
 
-// Implementierung der Zust„nde 
+// Implementierung der ZustÃ¤nde
 // nach Gammas Singelton-Muster
 
 public final class Other extends State {
@@ -22,21 +22,25 @@ public final class Other extends State {
 		return handleVar;
 	}
 
+	@Override
 	protected void acceptDigit(Automaton a, char ch) {
 		store(a, ch);
 		changeState(a, Digit.handle());
 	}
 
+	@Override
 	protected void acceptLetter(Automaton a, char ch) {
 		store(a, ch);
 		//changeState(a, Letter.handle());
 	}
 
+	@Override
 	protected void acceptOther(Automaton a, char ch) {
 		// Nothing to do
 		// No changeState
 	}
 
+	@Override
 	protected void acceptSign(Automaton a, char ch) {
 		store(a, ch);
 		changeState(a, Sign.handle());

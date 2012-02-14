@@ -135,8 +135,8 @@ public class JAdvancedTextArea extends JTextArea {
      */
     public JScrollPane getScrollPane() {
         JScrollPane temp = new JScrollPane(this);
-        temp.setHorizontalScrollBarPolicy(temp.HORIZONTAL_SCROLLBAR_ALWAYS);
-        temp.setVerticalScrollBarPolicy(temp.VERTICAL_SCROLLBAR_ALWAYS);
+        temp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        temp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         return temp;
     }
@@ -155,6 +155,7 @@ public class JAdvancedTextArea extends JTextArea {
             _app = app;
         }
 
+		@Override
         public void mouseClicked(MouseEvent e) {
             if (e.getButton() == 3) {
                 Point p = e.getPoint();
@@ -162,9 +163,13 @@ public class JAdvancedTextArea extends JTextArea {
             }
         }
 
+		@Override
         public void mouseEntered(MouseEvent e) {}
+		@Override
         public void mouseExited(MouseEvent e) {}
+		@Override
         public void mousePressed(MouseEvent e) {}
+		@Override
         public void mouseReleased(MouseEvent e) {}
     }
 
@@ -187,9 +192,9 @@ public class JAdvancedTextArea extends JTextArea {
 
         private void initialize() {
             _copy = new JMenuItem("Kopieren");
-            _paste = new JMenuItem("Einfügen");
+            _paste = new JMenuItem("EinfÃ¼gen");
             _cut = new JMenuItem("Ausschneiden");
-            _delete = new JMenuItem("Löschen");
+            _delete = new JMenuItem("LÃ¶schen");
 
             this.add(_copy);
             this.add(_paste);

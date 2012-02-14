@@ -1,6 +1,5 @@
 package de.haw.cip.logic.semanticanalysis;
 
-import de.haw.cip.util.Prt;
 import de.mk.exception.CompilerErrorException;
 
 /**
@@ -20,12 +19,14 @@ public class O1EAC extends State {
 		return handleVar;
 	}
 
+	@Override
 	protected void acceptOperand(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.EacToRunTimeStack();
 		a.push(s);
 		changeState(a, OP2.handle());
 	}
+	@Override
 	protected void acceptPlus(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.pullOpnd2();
@@ -33,6 +34,7 @@ public class O1EAC extends State {
 		a.eacOPopnd2("ADD.W");
 		changeState(a,O2EAC.handle());
 	}
+	@Override
 	protected void acceptMinus(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.pullOpnd2();
@@ -40,6 +42,7 @@ public class O1EAC extends State {
 		a.eacOPopnd2("SUB.W");
 		changeState(a,O2EAC.handle());
 	}
+	@Override
 	protected void acceptMul(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.pullOpnd2();
@@ -47,6 +50,7 @@ public class O1EAC extends State {
 		a.eacOPopnd2("MULS");
 		changeState(a,O2EAC.handle());
 	}
+	@Override
 	protected void acceptDiv(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.pullOpnd2();
@@ -54,11 +58,13 @@ public class O1EAC extends State {
 		a.eacOPopnd2("DIVS");
 		changeState(a,O2EAC.handle());
 	}
+	@Override
 	protected void acceptPrint(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.addPrintString();
 		changeState(a,Start.handle());
 	}
+	@Override
 	protected void acceptCMP(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.pullOpnd2();
@@ -66,6 +72,7 @@ public class O1EAC extends State {
 		a.eacCMPOpnd2(s);
 		changeState(a,Start.handle());
 	}
+	@Override
 	protected void acceptPreMinus(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.EacToRunTimeStack();
@@ -73,9 +80,11 @@ public class O1EAC extends State {
 		a.negEac();
 		changeState(a,O2EAC.handle());
 	}
+	@Override
 	public void destroy() {
 	}
 
 	public static void main(String[] args) {
 	}
-	}
+
+}

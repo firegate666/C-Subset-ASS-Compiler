@@ -25,6 +25,7 @@ public class SwitchOutputVisibleAction extends AbstractAction {
 	/**
 	 * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
 	 */
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		getApp().switchOutputVisible();
 	}

@@ -237,7 +237,7 @@ public class CodeBuilder extends Automaton {
 		else if(lastcmp.equalsIgnoreCase(">=")) branch = "BLT";
 		else if(lastcmp.equalsIgnoreCase("!=")) branch = "BEQ";
 		else if(lastcmp.equalsIgnoreCase("<>")) branch = "BEQ";
-		else throw new CompilerErrorException("Ungültiger Vergleich: "+lastcmp);
+		else throw new CompilerErrorException("Ungï¿½ltiger Vergleich: "+lastcmp);
 		
 		asm += "\t"+branch+" " + marke.substring( 1) + "\n";
 	}
@@ -277,7 +277,7 @@ public class CodeBuilder extends Automaton {
 				else
 					this.addMOV('B', "#PRTSTR", "D0");
 
-				//entweder wir fügen jedem PRG PRTSTR zu oder es muss eine neuen Methode her.
+				//entweder wir fï¿½gen jedem PRG PRTSTR zu oder es muss eine neuen Methode her.
 				this.addTrap(15);
 				varcount++;
 			}
@@ -334,6 +334,7 @@ public class CodeBuilder extends Automaton {
 	//
 	//
 
+	@Override
 	public void accept(String s) {
 		String result = "";
 		try {

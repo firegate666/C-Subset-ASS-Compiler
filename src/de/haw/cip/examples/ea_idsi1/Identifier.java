@@ -19,21 +19,25 @@ public final class Identifier extends State {
 		return handleVar;
 	}
 
+	@Override
 	protected void acceptDigit(Automaton a, char ch) {
 		store(a, ch);
 		// No changeState
 	}
 
+	@Override
 	protected void acceptLetter(Automaton a, char ch) {
 		store(a, ch);
 		// No changeState
 	}
 
+	@Override
 	protected void acceptOther(Automaton a, char ch) {
 		restore(a, ch);
 		changeState(a, Other.handle());
 	}
 
+	@Override
 	protected void acceptSign(Automaton a, char ch) {
 		restoreAndStore(a, ch);
 		changeState(a, Other.handle());

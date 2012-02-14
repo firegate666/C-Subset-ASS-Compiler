@@ -20,6 +20,7 @@ public class CompilerErrorException extends Exception{
   //-----------------------------------------------------//
 
   //Overrides Throwable's getMessage() method
+	@Override
   public String getMessage(){
     return ("Der Compilationsvorgang ist mit folgendem Fehler abgebrochen :\n"+ additionalMsg);
   }//end getMessage method

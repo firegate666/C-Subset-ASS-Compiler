@@ -1,7 +1,5 @@
 package de.haw.cip.logic;
 
-import de.haw.cip.logic.scanner.State;
-
 /**
  * @author Administrator
  *

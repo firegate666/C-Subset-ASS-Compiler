@@ -85,6 +85,7 @@ public class Symboltable {
 		return symbols.size();
 	}
 	
+	@Override
 	public String toString() {
 		String result = "ID\tTYPE\tASSIGNED\tINI-VAL\tUSED\n";
 		for(int i=0;i<this.size();i++) {

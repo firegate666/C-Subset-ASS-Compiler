@@ -27,7 +27,7 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
             return "";
         }
 
-        StringBuffer result = new StringBuffer(HTMLFactory.createAnchor(anchorName));
+        StringBuilder result = new StringBuilder(HTMLFactory.createAnchor(anchorName));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
@@ -54,8 +54,8 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
         String name,
         String value,
         boolean checked) {
-        StringBuffer result =
-            new StringBuffer(HTMLFactory.createCheckBox(innerText, name, value, checked));
+        StringBuilder result =
+            new StringBuilder(HTMLFactory.createCheckBox(innerText, name, value, checked));
 
         result.append(buildTag(INPUT, true));
 
@@ -69,8 +69,8 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
      * @return          complete hr-tag
      */
     public static String createHorizontalRule(boolean noshade) {
-        StringBuffer result =
-            new StringBuffer(HTMLFactory.createHorizontalRule(noshade));
+        StringBuilder result =
+            new StringBuilder(HTMLFactory.createHorizontalRule(noshade));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
@@ -89,7 +89,7 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
      * @return    complete br-tag
      */
     public static String createLineBreak() {
-        StringBuffer result = new StringBuffer(HTMLFactory.createLineBreak());
+        StringBuilder result = new StringBuilder(HTMLFactory.createLineBreak());
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
@@ -109,7 +109,7 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
      * @return            complete li-tag
      */
     public static String createListItem(String innerText) {
-        StringBuffer result = new StringBuffer(HTMLFactory.createListItem(innerText));
+        StringBuilder result = new StringBuilder(HTMLFactory.createListItem(innerText));
 
         result.append(buildTag(LI, true));
 
@@ -128,8 +128,8 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
         String innerText,
         String value,
         boolean selected) {
-        StringBuffer result =
-            new StringBuffer(HTMLFactory.createOption(innerText, value, selected));
+        StringBuilder result =
+            new StringBuilder(HTMLFactory.createOption(innerText, value, selected));
 
         result.append(buildTag(OPTION, true));
 
@@ -150,8 +150,8 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
         String name,
         String value,
         boolean checked) {
-        StringBuffer result =
-            new StringBuffer(
+        StringBuilder result =
+            new StringBuilder(
                 HTMLFactory.createRadioButton(innerText, name, value, checked));
 
         result.append(buildTag(INPUT, true));
@@ -166,7 +166,7 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
      * @return        complete input-tag (type resetbutton)
      */
     public static String createResetButton(String value) {
-        StringBuffer result = new StringBuffer(HTMLFactory.createResetButton(value));
+        StringBuilder result = new StringBuilder(HTMLFactory.createResetButton(value));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
@@ -186,8 +186,8 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
      * @return        complete input-tag (type submitbutton)
      */
     public static String createSubmitButtonCommon(String value) {
-        StringBuffer result =
-            new StringBuffer(HTMLFactory.createSubmitButtonCommon(value));
+        StringBuilder result =
+            new StringBuilder(HTMLFactory.createSubmitButtonCommon(value));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
@@ -207,8 +207,8 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
      * @return           complete input-tag (type graphical submitbutton)
      */
     public static String createSubmitButtonGraphical(String imageSrc) {
-        StringBuffer result =
-            new StringBuffer(HTMLFactory.createSubmitButtonGraphical(imageSrc));
+        StringBuilder result =
+            new StringBuilder(HTMLFactory.createSubmitButtonGraphical(imageSrc));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
@@ -237,8 +237,8 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
         int fieldSize,
         int maxChar,
         boolean readonly) {
-        StringBuffer result =
-            new StringBuffer(
+        StringBuilder result =
+            new StringBuilder(
                 HTMLFactory.createTextField(value, name, fieldSize, maxChar, readonly));
 
         if (lazyXHTML) {

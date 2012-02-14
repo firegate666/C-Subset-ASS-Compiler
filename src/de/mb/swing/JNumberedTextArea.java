@@ -176,10 +176,15 @@ public class JNumberedTextArea extends JScrollPane {
             this.app = app;
         }
 
+		@Override
         public void mouseClicked(MouseEvent e) {}
+		@Override
         public void mouseEntered(MouseEvent e) {}
+		@Override
         public void mouseExited(MouseEvent e) {}
+		@Override
         public void mousePressed(MouseEvent e) {}
+		@Override
         public void mouseReleased(MouseEvent e) {
             JList l = (JList) e.getSource();
             int line = ((Integer) l.getSelectedValue()).intValue();
@@ -193,8 +198,11 @@ public class JNumberedTextArea extends JScrollPane {
             this.app = app;
         }
         public void actionPerformed(ActionEvent e) {}
+		@Override
         public void keyTyped(KeyEvent e) {}
+		@Override
         public void keyPressed(KeyEvent e) {}
+		@Override
         public void keyReleased(KeyEvent e) {
             app.setLineCount();
         }

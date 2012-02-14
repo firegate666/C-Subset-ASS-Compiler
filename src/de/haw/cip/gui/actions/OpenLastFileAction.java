@@ -17,6 +17,7 @@ public class OpenLastFileAction extends AbstractAction {
 		super(app);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		File f = new File(((JMenuItemLastOpenedFile)e.getSource()).getFilename());
 		getApp().setSourceFile(f);
@@ -25,7 +26,7 @@ public class OpenLastFileAction extends AbstractAction {
 				FileReader.getString(getApp().getSourceFile()));
 			getApp().setScannerOutput("zieltext");
 			getApp().resetStatus();
-			getApp().printStatus( "Datei "+getApp().getSourceFile().getAbsolutePath()+" geöffnet." );
+			getApp().printStatus( "Datei "+getApp().getSourceFile().getAbsolutePath()+" geï¿½ffnet." );
 			getApp().getMenu().activateAllAnalysis();
 			getApp().getMenu().activateLexicalAnalysis();
 			getApp().getMenu().deactivateSyntaxAnalysis();

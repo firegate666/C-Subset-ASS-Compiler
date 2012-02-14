@@ -1,9 +1,7 @@
 package de.haw.cip.logic.scanner;
 
-import de.haw.cip.logic.Automaton;
 import de.haw.cip.util.Prt;
 import de.mk.exception.CompilerErrorException;
-import de.mk.exception.ExceptionHandler;
 
 /**
  * @author behnke_m / koose_m

@@ -22,7 +22,8 @@ public CloseFileAction(CIPWindow app) {
 	}
 
 
-public void actionPerformed(ActionEvent e) {
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		new CloseAction((AWTEvent) e);
 	}
 

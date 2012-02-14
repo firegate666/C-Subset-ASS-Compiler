@@ -111,7 +111,7 @@ public class CIPWindow extends JDefaultFrame {
 
 	public CIPWindow() throws CompilerErrorException {
 		super();
-		this.initialize();
+		initialize();
 	}
 
 	private ScrollText getScrollableTextPanel(
@@ -180,7 +180,7 @@ public class CIPWindow extends JDefaultFrame {
 		this.statusPanel.setText("");
 	}
 
-	public void initialize() throws CompilerErrorException {
+	private void initialize() throws CompilerErrorException {
 		menu = new CIPMenu(this);
 		
 		getContentPane().setLayout(new BorderLayout());

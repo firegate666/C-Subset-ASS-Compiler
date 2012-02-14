@@ -20,15 +20,18 @@ public final class Odd extends State { // Ungerade Paritaet
 		return handleVar;
 	}
 
+	@Override
 	void acceptZero(Automaton a) {
 		store(a, '0');
 	}
 
+	@Override
 	void acceptOne(Automaton a) {
 		store(a, '1');
 		changeState(a, Even.handle());
 	}
 
+	@Override
 	void acceptEtx(Automaton a) {
 		restore(a, "Paritaet ungerade");
 	}

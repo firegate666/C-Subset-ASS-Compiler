@@ -16,18 +16,19 @@ import de.mk.exception.ExceptionHandler;
  */
 public class SemanticAnalysisAction extends AbstractAction{
 
-/**
- * Constructor for SemanticAnalysisAction.
- * @param app
- */
-public SemanticAnalysisAction(CIPWindow app) {
+	/**
+	 * Constructor for SemanticAnalysisAction.
+	 * @param app
+	 */
+	public SemanticAnalysisAction(CIPWindow app) {
 		super(app);
 	}
 
-/**
- * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
- */
-public void actionPerformed(ActionEvent e)  {
+	/**
+	 * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
+	 */
+	@Override
+	public void actionPerformed(ActionEvent e)  {
 		try {
 			SyntaxAnalysis s = SyntaxAnalysis.getInstance();
 			getApp().setPtfOutput(s.getPtf());

@@ -1,6 +1,5 @@
 package de.haw.cip.logic.semanticanalysis;
 
-import de.haw.cip.util.Prt;
 import de.mk.exception.CompilerErrorException;
 
 /**

@@ -19,21 +19,25 @@ public final class Sign extends State {
 		return handleVar;
 	}
 
+	@Override
 	protected void acceptDigit(Automaton a, char ch) {
 		store(a, ch);
 		changeState(a, Digit.handle());
 	}
 
+	@Override
 	protected void acceptLetter(Automaton a, char ch) {
 		resetAndStore(a, ch);
 		changeState(a, Identifier.handle());
 	}
 
+	@Override
 	protected void acceptOther(Automaton a, char ch) {
 		reset(a, ch);
 		changeState(a, Other.handle());
 	}
 
+	@Override
 	protected void acceptSign(Automaton a, char ch) {
 		resetAndStore(a, ch);
 		changeState(a, Sign.handle());

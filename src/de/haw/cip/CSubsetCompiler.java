@@ -1,6 +1,5 @@
 package de.haw.cip;
 
-import javax.swing.UIManager;
 import de.haw.cip.gui.CIPWindow;
 import de.mk.exception.ExceptionHandler;
 
@@ -19,15 +18,15 @@ import de.mk.exception.ExceptionHandler;
 public class CSubsetCompiler {
 
 	/**
-	 * Main executble method
+	 * Main executable method
 	 */
 	public static void main(String[] args) {
 		CIPWindow cip;
 		try {
 			cip = new CIPWindow();
-			cip.hide();
+			cip.setVisible(false);
 			cip.setBounds(25, 25, 800, 600);
-			cip.show();
+			cip.setVisible(true);
 		} catch (Exception e) {
 			System.out.println("STARTER_ERROR");
 			e.printStackTrace();

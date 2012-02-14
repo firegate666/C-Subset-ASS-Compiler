@@ -17,6 +17,7 @@ public class CSourceFileFilter extends FileFilter {
     /**
      * @see javax.swing.filechooser.FileFilter#accept(File)
      */
+	@Override
     public boolean accept(File f) {
     	if(f.isDirectory()) return true;
     	
@@ -30,6 +31,7 @@ public class CSourceFileFilter extends FileFilter {
     /**
      * @see javax.swing.filechooser.FileFilter#getDescription()
      */
+	@Override
     public String getDescription() {
         return "*.c";
     }

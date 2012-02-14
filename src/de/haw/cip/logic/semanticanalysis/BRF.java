@@ -1,6 +1,5 @@
 package de.haw.cip.logic.semanticanalysis;
 
-import de.haw.cip.util.Prt;
 import de.mk.exception.CompilerErrorException;
 
 public class BRF extends State {
@@ -16,9 +15,11 @@ public class BRF extends State {
 		return handleVar;
 	}
 
+	@Override
 	public void destroy() {
 	}
 
+	@Override
 	protected void acceptMark(CodeBuilder a, String s)
 		throws CompilerErrorException {
 		a.addBRF(s);

@@ -87,7 +87,7 @@ private JPanel getTextPanel(String eMsg) {
 			frame.setSize(600,400);
 			frame.setVisible(true);
 			// Damit das Ursprungsfenster offen bleibt
-			frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE  );
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE  );
 		} else { // wo sollen weitere Exceptions aufgenommen werden ?
 		}
 	}

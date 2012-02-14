@@ -99,7 +99,7 @@ public class SyntaxAnalysis {
 			}
 		}
 
-		if(vector.size() != 0) {
+		if(!vector.isEmpty()) {
 			msg = "WARNING: The following variables have been declared but never been used:\n";
 			for(int i=0;i<vector.size() ;i++) {
 				msg+= "--> "+vector.elementAt(i )+"\n";
@@ -110,11 +110,11 @@ public class SyntaxAnalysis {
 	}
 
 	//
-	// 				AB   HIER    METHODEN f�r den rek. Abstieg
+	// 				AB   HIER    METHODEN für den rek. Abstieg
 	//
 
 	public void analyse() throws CompilerErrorException {
-		// Klammerpr�fung
+		// Klammerprüfung
 		this.checkParanthesis(scan.p_onoff(), scan.k_onoff());
 		this.programm();
 		this.checkIdentifierUsed();
@@ -422,7 +422,7 @@ public class SyntaxAnalysis {
 			if (scan.optional("SPECIAL_CHAR", "-")) {
 				sign = true;
 			}
-		};
+		}
 		this.term();
 		if (sign)
 			ptf("@");

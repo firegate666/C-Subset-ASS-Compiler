@@ -43,8 +43,8 @@ public class DeclarationBuilder implements Singleton {
 		// IDENTIFIER
 		result += symbol.get_identifier();
 
-		if(symbol.get_type() == "String") result += "\t"+_STRINGCONST;
-		else if(symbol.get_type() == "int") result += "\t"+_INTCONST;
+		if(symbol.get_type() == null ? "String" == null : symbol.get_type().equals("String")) result += "\t"+_STRINGCONST;
+		else if(symbol.get_type() == null ? "int" == null : symbol.get_type().equals("int")) result += "\t"+_INTCONST;
 		else throw new CompilerErrorException("Undefined type >"+symbol.get_type()+"< found");
 		
 		// VALUE

@@ -2,7 +2,6 @@ package de.haw.cip.logic.scanner;
 
 import java.util.Vector;
 
-import de.haw.cip.util.Prt;
 import de.mk.exception.CompilerErrorException;
 
 /**

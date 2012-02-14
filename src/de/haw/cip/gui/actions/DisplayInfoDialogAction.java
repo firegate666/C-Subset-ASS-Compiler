@@ -21,6 +21,7 @@ public class DisplayInfoDialogAction extends AbstractAction {
     /**
      * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
      */
+	@Override
     public void actionPerformed(ActionEvent e) {
 		JInfoDialog d = new JInfoDialog(getApp(),getApp().appTitle(),getApp().appVersion(),getApp().appAuthors() );
 		d.show();

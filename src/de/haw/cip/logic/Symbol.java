@@ -32,9 +32,9 @@ public class Symbol {
 		Vector result=new Vector();
 		result.add(this.get_identifier());
 		result.add(this.get_type());
-		result.add(new Boolean(this.is_assigned() ));
+		result.add(this.is_assigned());
 		result.add(this.get_initialValue()  );
-		result.add(new Boolean(this.is_used() ));
+		result.add(this.is_used());
 		return result;
 	}
 		
@@ -107,6 +107,7 @@ public class Symbol {
         this._initialValue = _initialValue;
     }
     
+	@Override
     public String toString() {
     	String result="";
 		result+=this.get_identifier() +"\t";

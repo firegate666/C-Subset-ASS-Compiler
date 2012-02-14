@@ -17,7 +17,6 @@ import de.haw.cip.logic.Tokens;
 import de.haw.cip.util.Prt;
 import de.mk.exception.CompilerErrorException;
 
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -113,7 +112,7 @@ public class Scanner extends Automaton {
 		public final static LsdClass[] arr = new LsdClass[256];
 
 		public final static LsdClass // Erzeugung der einzig
-			DIGIT = new LsdClass(0), // möglichen Objekte
+			DIGIT = new LsdClass(0), // mï¿½glichen Objekte
 		LETTER = new LsdClass(1), // von lsdClass
 	PLUS = new LsdClass(2),
 		MINUS = new LsdClass(3),
@@ -139,7 +138,7 @@ public class Scanner extends Automaton {
 	KOMMA = new LsdClass(21); // ,
 
 		// Zuordnung Zeichen  Klasse
-		//Alle möglichen Eingaben des Automaten!!!!
+		//Alle mï¿½glichen Eingaben des Automaten!!!!
 		static { // Static Block, siehe Kap. 4.4.4
 			char c;
 			for (c = 0; c <= 32; ++c)
@@ -253,7 +252,7 @@ public class Scanner extends Automaton {
 		//System.out.print(" ==> " + foundToken);
 		//Prt.ln();
 
-		// Klammerprüfung
+		// Klammerprï¿½fung
 		if (temp.equals("("))
 			p_onoff++;
 		if (temp.equals(")"))
@@ -262,7 +261,7 @@ public class Scanner extends Automaton {
 			k_onoff++;
 		if (temp.equals("}"))
 			k_onoff--;
-		// Klammerprüfung Ende
+		// Klammerprï¿½fung Ende
 
 		this.tokens.addToken(new Token(foundToken, temp));
 		reset(ch);

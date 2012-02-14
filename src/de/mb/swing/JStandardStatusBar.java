@@ -87,6 +87,7 @@ public class JStandardStatusBar extends JStatusBar {
         /**
          * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
          */
+		@Override
         public void actionPerformed(ActionEvent e) {
             _app.setTime();
         }

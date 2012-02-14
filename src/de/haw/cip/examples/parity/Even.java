@@ -19,15 +19,18 @@ public final class Even extends State { // Gerader Paritaet
 		return handleVar;
 	}
 
+	@Override
 	void acceptZero(Automaton a) {
 		store(a, '0');
 	}
 
+	@Override
 	void acceptOne(Automaton a) {
 		store(a, '1');
 		changeState(a, Odd.handle());
 	}
 
+	@Override
 	void acceptEtx(Automaton a) {
 		restore(a, "Paritaet gerade..");
 

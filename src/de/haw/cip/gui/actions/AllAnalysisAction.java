@@ -20,6 +20,7 @@ public class AllAnalysisAction extends AbstractAction {
     /**
      * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
      */
+	@Override
     public void actionPerformed(ActionEvent e) {
     	new LexicalAnalysisAction(getApp()).actionPerformed(e);
     	new SyntaxAnalysisAction(getApp()).actionPerformed(e);

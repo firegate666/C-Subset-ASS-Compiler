@@ -27,6 +27,7 @@ public class LexicalAnalysisAction extends AbstractAction {
 	/**
 	 * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
 	 */
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		getApp().setScanner();
 		try {

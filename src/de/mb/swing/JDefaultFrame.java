@@ -36,6 +36,7 @@ public class JDefaultFrame extends JFrame {
     }
 
     class DefaultListener extends WindowAdapter {
+		@Override
         public void windowClosing(WindowEvent e) {
             new CloseAction(e);
         }
