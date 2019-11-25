@@ -9,24 +9,22 @@ import java.util.Iterator;
 
 public abstract class Automaton {
 
-    protected char actChar = ' ';
+    private char actChar = ' ';
     protected State actState = null;
-    protected String name = "noName";
+    private String name = "noName";
     protected ArrayList buffer = new ArrayList();
     private ArrayList states = new ArrayList();
 
-    public Automaton(String n) {
+    protected Automaton(String n) {
         name = n;
     } // Init auf Anfangszustand
 
-    public Automaton() {
+    protected Automaton() {
         this("no name given");
     }
 
     public void resetScanner() {
-        Iterator i = states.iterator();
-        while (i.hasNext())
-            ((State) i.next()).destroy();
+        for (Object state : states) ((State) state).destroy();
         buffer.clear();
         actChar = ' ';
         actState = null;
@@ -34,8 +32,7 @@ public abstract class Automaton {
 
     public String getBufferCopy() {
         String result = "";
-        Iterator it = buffer.iterator();
-        while (it.hasNext()) result += it.next().toString();
+        for (Object o : buffer) result += o.toString();
         return result;
     }
 
@@ -50,10 +47,10 @@ public abstract class Automaton {
     }
 
     public void store(char ch) {
-        buffer.add(new Character(ch));
+        buffer.add(ch);
     }
 
-    public void restore(char ch) {
+    private void restore(char ch) {
         Iterator it = buffer.iterator();
         Prt.st("TOKEN Found: ");
         while (it.hasNext())

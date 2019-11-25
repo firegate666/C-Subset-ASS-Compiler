@@ -25,27 +25,27 @@ public abstract class State {
     // Transformiert die Aufrufe der Zustaende
     // in Aufrufe des Automaten, spez. Up-Casting newState
 
-    protected void changeState(Automaton a, State newState) {
+    void changeState(Automaton a, State newState) {
         a.changeState(newState);
     }
 
-    protected void reset(Automaton a, char ch) {
+    void reset(Automaton a, char ch) {
         a.reset(ch);
     }
 
-    protected void resetAndStore(Automaton a, char ch) {
+    void resetAndStore(Automaton a, char ch) {
         a.resetAndStore(ch);
     }
 
-    protected void restore(Automaton a, char ch) {
+    void restore(Automaton a, char ch) {
         a.restore(ch);
     }
 
-    protected void restoreAndStore(Automaton a, char ch) {
+    void restoreAndStore(Automaton a, char ch) {
         a.resetAndStore(ch);
     }
 
-    protected void store(Automaton a, char ch) {
+    void store(Automaton a, char ch) {
         a.store(ch);
     }
 

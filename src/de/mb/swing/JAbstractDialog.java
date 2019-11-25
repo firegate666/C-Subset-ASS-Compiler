@@ -9,15 +9,15 @@ import java.awt.event.WindowEvent;
  */
 public abstract class JAbstractDialog extends Dialog {
 
-    protected int _width;
-    protected int _height;
+    int _width;
+    int _height;
 
     /**
      * Constructor for JAbstractDialog.
      *
      * @param owner
      */
-    public JAbstractDialog(Frame owner) {
+    JAbstractDialog(Frame owner) {
         super(owner);
         this.initialize();
     }
@@ -140,7 +140,7 @@ public abstract class JAbstractDialog extends Dialog {
 
     // Internal Classes
     class DialogCloseAction {
-        public DialogCloseAction(AWTEvent e) {
+        DialogCloseAction(AWTEvent e) {
             action(e);
         }
 
@@ -150,7 +150,7 @@ public abstract class JAbstractDialog extends Dialog {
     }
 
     class DialogListener extends WindowAdapter {
-        public DialogListener() {
+        DialogListener() {
             super();
         }
 

@@ -2,7 +2,7 @@ package de.mb.util;
 
 import java.util.Vector;
 
-public class StringList {
+class StringList {
 
     private Vector fCollection;
 
@@ -36,8 +36,8 @@ public class StringList {
 
     public boolean addAll(Vector items) {
         boolean flag = true;
-        for (int i = 0; i < items.size(); i++) {
-            flag = add(items.get(i).toString()) && flag;
+        for (Object item : items) {
+            flag = add(item.toString()) && flag;
         }
         return flag;
     }

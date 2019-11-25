@@ -22,67 +22,67 @@ public abstract class State {
         throw new CompilerErrorException("[CODEERZEUGUNG] Falsches Zeichen erhalten:" + s);
     }
 
-    protected void acceptMark(CodeBuilder a, String s)
+    void acceptMark(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptOperand(CodeBuilder a, String s)
+    void acceptOperand(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptPlus(CodeBuilder a, String s)
+    void acceptPlus(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptMinus(CodeBuilder a, String s)
+    void acceptMinus(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptMul(CodeBuilder a, String s)
+    void acceptMul(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptDiv(CodeBuilder a, String s)
+    void acceptDiv(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptBRF(CodeBuilder a, String s)
+    void acceptBRF(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptJMP(CodeBuilder a, String s)
+    void acceptJMP(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptPrint(CodeBuilder a, String s)
+    void acceptPrint(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptScan(CodeBuilder a, String s)
+    void acceptScan(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptCMP(CodeBuilder a, String s)
+    void acceptCMP(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptPreMinus(CodeBuilder a, String s)
+    void acceptPreMinus(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
 
-    protected void acceptAssign(CodeBuilder a, String s)
+    void acceptAssign(CodeBuilder a, String s)
             throws CompilerErrorException {
         this.error(s);
     }
@@ -92,7 +92,7 @@ public abstract class State {
     // Transformiert die Aufrufe der Zustaende
     // in Aufrufe des Automaten, spez. Up-Casting newState
 
-    protected void changeState(CodeBuilder cb, State newState) {
+    void changeState(CodeBuilder cb, State newState) {
         cb.changeState(newState);
     }
 

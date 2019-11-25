@@ -6,7 +6,7 @@ package de.mb.web.html;
  * @author mb
  * @created December 11, 2001
  */
-public final class HTMLConstants {
+final class HTMLConstants {
     public final static String FORM_POST = "post";
     public final static String FORM_GET = "get";
     public final static String ALIGN_CENTER = "center";

@@ -46,7 +46,7 @@ public final class Ill extends State {
         errorMsg = newErrorMsg;
     }
 
-    public String getErrorMsg() {
+    private String getErrorMsg() {
         return errorMsg;
     }
 

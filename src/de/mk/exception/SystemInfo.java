@@ -70,7 +70,7 @@ public class SystemInfo {
                         + System.getProperty("user.dir"));
     }
 
-    public Enumeration getInfos() {
+    private Enumeration getInfos() {
         return infos.elements();
     }
 

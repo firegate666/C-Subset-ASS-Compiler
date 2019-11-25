@@ -1,14 +1,5 @@
 package de.haw.cip.logic.scanner;
 
-/**
- * @author Martin Koose
- * <p>
- * To change this generated comment edit the template variable "typecomment":
- * Window>Preferences>Java>Templates.
- * To enable and disable the creation of type comments go to
- * Window>Preferences>Java>Code Generation.
- */
-
 import de.haw.cip.gui.CIPWindow;
 import de.haw.cip.logic.Automaton;
 import de.haw.cip.logic.Symboltable;
@@ -25,17 +16,15 @@ public class Scanner extends Automaton {
 
     private char actChar = ' ';
     private int nextToken = 0;
-    private int lastToken = 0;
     private String nSym = "";
     private String nSem = "";
     private int p_onoff = 0;
     private int k_onoff = 0;
-    private LsdClass actClass = null; // (1)
     private Vector token = new Vector();
     private Tokens tokens = new Tokens();
     private Symboltable symbols = new Symboltable();
     private CIPWindow app;
-    public Scanner(String n) { // Init auf Anfangszustand
+    private Scanner(String n) { // Init auf Anfangszustand
         // => Erzeugung des Anfangszustandes
         super(n);
         actState = Start.handle();
@@ -58,7 +47,7 @@ public class Scanner extends Automaton {
         actChar = ' ';
         actState = Start.handle();
         nextToken = 0;
-        lastToken = 0;
+        int lastToken = 0;
         nSym = "";
         nSem = "";
         p_onoff = 0;
@@ -100,7 +89,8 @@ public class Scanner extends Automaton {
             actChar = actString.charAt(i);
 
             // Klassifizierung des aktuellen Zeichens
-            actClass = LsdClass.arr[actChar];
+            // (1)
+            LsdClass actClass = LsdClass.arr[actChar];
 
             // Leider kein switch moeglich
 
@@ -208,7 +198,7 @@ public class Scanner extends Automaton {
     }
 
 
-    public void scan() {
+    private void scan() {
         if (nextToken < tokens.size()) {
             this.nSem = tokens.getToken(nextToken).getNSem();
             this.nSym = tokens.getToken(nextToken).getNSym();
@@ -288,7 +278,7 @@ public class Scanner extends Automaton {
                             + " konnte nicht angelegt werden, da bereits eine Variable mit diesem Namen exisitiert!");
     }
 
-    public void addSymbol(String identifier) throws CompilerErrorException {
+    private void addSymbol(String identifier) throws CompilerErrorException {
         this.addSymbol(identifier, "int");
     }
 
@@ -320,7 +310,7 @@ public class Scanner extends Automaton {
     }
 
     public boolean identifierExists(String identifier) {
-        return symbols.identifierExists(identifier);
+        return !symbols.identifierExists(identifier);
     }
 
     public boolean identifierIsAssigned(String identifier) {
@@ -372,32 +362,33 @@ public class Scanner extends Automaton {
         // LsdClass ist eine innere Klasse des Automaten
 
         // Klassifizierung der ersten 128 Zeichen mittels arr
-        public final static LsdClass[] arr = new LsdClass[256];
-        public final static LsdClass // Erzeugung der einzig
-                DIGIT = new LsdClass(0), // m�glichen Objekte
-                LETTER = new LsdClass(1), // von lsdClass
-                PLUS = new LsdClass(2),
-                MINUS = new LsdClass(3),
-                MUL = new LsdClass(4),
-                DIV = new LsdClass(5),
-                EQUAL = new LsdClass(6),
-                SEMICOLON = new LsdClass(7),
-        // ;
-        GREATER = new LsdClass(8),
-                LESS = new LsdClass(9),
-                PAR_ON = new LsdClass(10),
-        // (
-        PAR_OFF = new LsdClass(11), // )
-                OTHER = new LsdClass(12), K_ON = new LsdClass(13), // {
-                K_OFF = new LsdClass(14), // }
-                GOOSEFEET = new LsdClass(15), // '
-                PRINTABLE = new LsdClass(16),
-                SPACE = new LsdClass(17),
-                ETX = new LsdClass(18),
-        // End of Text
-        LF = new LsdClass(19), // Line feed
-                NOT = new LsdClass(20), // !
-                KOMMA = new LsdClass(21); // ,
+        final static LsdClass[] arr = new LsdClass[256];
+        final static LsdClass // Erzeugung der einzig
+                DIGIT = new LsdClass(0); // m�glichen Objekte
+                final static LsdClass LETTER = new LsdClass(1); // von lsdClass
+                final static LsdClass PLUS = new LsdClass(2);
+        final static LsdClass MINUS = new LsdClass(3);
+        final static LsdClass MUL = new LsdClass(4);
+        final static LsdClass DIV = new LsdClass(5);
+        final static LsdClass EQUAL = new LsdClass(6);
+        final static LsdClass SEMICOLON = new LsdClass(7);
+        final static LsdClass// ;
+        GREATER = new LsdClass(8);
+        final static LsdClass LESS = new LsdClass(9);
+        final static LsdClass PAR_ON = new LsdClass(10);
+        final static LsdClass// (
+        PAR_OFF = new LsdClass(11); // )
+                final static LsdClass OTHER = new LsdClass(12);
+        final static LsdClass K_ON = new LsdClass(13); // {
+                final static LsdClass K_OFF = new LsdClass(14); // }
+                final static LsdClass GOOSEFEET = new LsdClass(15); // '
+                final static LsdClass PRINTABLE = new LsdClass(16);
+        final static LsdClass SPACE = new LsdClass(17);
+        final static LsdClass ETX = new LsdClass(18);
+        final static LsdClass// End of Text
+        LF = new LsdClass(19); // Line feed
+                final static LsdClass NOT = new LsdClass(20); // !
+                final static LsdClass KOMMA = new LsdClass(21); // ,
 
         // Zuordnung Zeichen  Klasse
         //Alle m�glichen Eingaben des Automaten!!!!

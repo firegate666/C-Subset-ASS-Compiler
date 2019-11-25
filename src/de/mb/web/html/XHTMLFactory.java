@@ -7,13 +7,13 @@ package de.mb.web.html;
  * @author mb
  * @created December 13, 2001
  */
-public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
+class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
 
     /**
      * if true, lazy xhtml-tags are used if possibly. if false every openeing
      * tag is closed by normal closing tag
      */
-    protected static boolean lazyXHTML = false;
+    private static boolean lazyXHTML = false;
 
     /**
      * Builds anchor tag. Can be lazy tag.

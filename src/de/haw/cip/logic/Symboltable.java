@@ -73,7 +73,7 @@ public class Symboltable {
         return null;
     }
 
-    public boolean addSymbol(Symbol symbol) {
+    private boolean addSymbol(Symbol symbol) {
         if (this.size() == 0) {
             symbols.add(symbol);
             return true;
@@ -91,7 +91,7 @@ public class Symboltable {
         return symbols.iterator();
     }
 
-    public int size() {
+    private int size() {
         return symbols.size();
     }
 
@@ -126,7 +126,7 @@ public class Symboltable {
         return this.getSymbol(identifier).is_used();
     }
 
-    public boolean identifierExists(Symbol symbol) {
+    private boolean identifierExists(Symbol symbol) {
         return this.identifierExists(symbol.get_identifier());
     }
 
@@ -142,7 +142,7 @@ public class Symboltable {
                 result = true;
             }
             counter++;
-        } while ((result == false) && (counter < size));
+        } while (!result && counter < size);
 
         return result;
 

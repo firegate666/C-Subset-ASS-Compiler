@@ -27,7 +27,7 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
      * @param text  Filename to store with
      * @param index Leading number
      */
-    public JMenuItemLastOpenedFile(String text, int index) {
+    private JMenuItemLastOpenedFile(String text, int index) {
         super(index + ". " + text);
         this.setIndex(index);
         this.setFilename(text);
@@ -48,7 +48,7 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
      *
      * @param pathname Filename
      */
-    public void setFilename(String pathname) {
+    private void setFilename(String pathname) {
         this._filename = pathname;
     }
 
@@ -75,7 +75,7 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
      *
      * @param index leading number
      */
-    public void setIndex(int index) {
+    private void setIndex(int index) {
         this._index = index;
     }
 

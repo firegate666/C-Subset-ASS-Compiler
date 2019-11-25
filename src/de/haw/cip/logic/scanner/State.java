@@ -65,11 +65,11 @@ public abstract class State {
     // Transformiert die Aufrufe der Zustaende
     // in Aufrufe des Automaten, spez. Up-Casting newState
 
-    protected void changeState(Scanner a, State newState) {
+    void changeState(Scanner a, State newState) {
         a.changeState(newState);
     }
 
-    protected void reset(Scanner a, char ch) {
+    void reset(Scanner a, char ch) {
         a.reset(ch);
     }
 
@@ -77,15 +77,15 @@ public abstract class State {
         a.resetAndStore(ch);
     }
 
-    protected void restore(Scanner a, char ch, String token) {
+    void restore(Scanner a, char ch, String token) {
         a.restore(ch, token);
     }
 
-    protected void restoreAndStore(Scanner a, char ch, String token) {
+    void restoreAndStore(Scanner a, char ch, String token) {
         a.restoreAndStore(ch, token);
     }
 
-    protected void store(Scanner a, char ch) {
+    void store(Scanner a, char ch) {
         a.store(ch);
     }
 

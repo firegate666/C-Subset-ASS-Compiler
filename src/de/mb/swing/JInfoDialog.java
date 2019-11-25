@@ -5,14 +5,6 @@ import java.awt.*;
 
 public class JInfoDialog extends JAbstractDialog {
 
-    private JLabel _title_text;
-
-    private LayoutManager _layout = new GridLayout(2, 2);
-    private JLabel _version_label = new JLabel("Version:");
-    private JLabel _version_text;
-    private JLabel _authors_label = new JLabel("Autoren:");
-    private JLabel _authors_text;
-
     /**
      * Public constructor
      *
@@ -34,16 +26,19 @@ public class JInfoDialog extends JAbstractDialog {
         this.setModal(true);
         setTitle(title);
 
-        _title_text = new JLabel(title);
+        JLabel _title_text = new JLabel(title);
         this.add(_title_text, BorderLayout.NORTH);
 
-        _version_text = new JLabel(version);
-        _authors_text = new JLabel(authors);
+        JLabel _version_text = new JLabel(version);
+        JLabel _authors_text = new JLabel(authors);
 
         JPanel panel = new JPanel();
+        LayoutManager _layout = new GridLayout(2, 2);
         panel.setLayout(_layout);
+        JLabel _version_label = new JLabel("Version:");
         panel.add(_version_label);
         panel.add(_version_text);
+        JLabel _authors_label = new JLabel("Autoren:");
         panel.add(_authors_label);
         panel.add(_authors_text);
 

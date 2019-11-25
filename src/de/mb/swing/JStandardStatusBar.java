@@ -17,7 +17,6 @@ public class JStandardStatusBar extends JStatusBar {
     private JPanel _left;
     private JPanel _center;
     private JLabel _right;
-    private Timer _clock_timer;
 
     /**
      * Public constructor.
@@ -64,7 +63,7 @@ public class JStandardStatusBar extends JStatusBar {
         this.add(_center, BorderLayout.CENTER);
         this.add(_right, BorderLayout.EAST);
 
-        _clock_timer = new Timer(1000, new SetClockActionListener(this));
+        Timer _clock_timer = new Timer(1000, new SetClockActionListener(this));
         _clock_timer.start();
     }
 
@@ -76,7 +75,7 @@ public class JStandardStatusBar extends JStatusBar {
 
         private JStandardStatusBar _app;
 
-        public SetClockActionListener(JStandardStatusBar app) {
+        SetClockActionListener(JStandardStatusBar app) {
             _app = app;
         }
 

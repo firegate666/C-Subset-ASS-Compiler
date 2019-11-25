@@ -23,7 +23,7 @@ public class Automaton { // Der Parity-Automat
     }
 
     void store(char ch) {
-        buffer.addElement(new Character(ch));
+        buffer.addElement(ch);
     }
 
     void restore(String parity) {

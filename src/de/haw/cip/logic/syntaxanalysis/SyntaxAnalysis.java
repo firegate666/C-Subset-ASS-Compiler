@@ -42,7 +42,7 @@ public class SyntaxAnalysis {
         return syntaxanalysis;
     }
 
-    public CIPWindow getApp() {
+    private CIPWindow getApp() {
         return this.app;
     }
 
@@ -60,7 +60,7 @@ public class SyntaxAnalysis {
 
     private void checkParanthesis(int p_onoff, int k_onoff)
             throws CompilerErrorException {
-        String result = "Fehler Syntaxanalyse!! Ung�ltige Klammerzahl\n";
+        String result = "Fehler Syntaxanalyse!! Ungültige Klammerzahl\n";
         if ((p_onoff == 0) && (k_onoff == 0)) {
         } else {
             if (p_onoff > 0)
@@ -90,7 +90,7 @@ public class SyntaxAnalysis {
 
     private void checkIdentifierUsed() throws CompilerErrorException {
         String msg = "";
-        Vector<String> vector = new Vector<String>();
+        Vector<String> vector = new Vector<>();
         Iterator it = scan.getSymbols().iterator();
         while (it.hasNext()) {
             Symbol next = (Symbol) it.next();
@@ -140,7 +140,7 @@ public class SyntaxAnalysis {
         boolean added = false;
         while (!added) {
             variable = this.var + (this.varcount++);
-            if (!scan.identifierExists(variable)) {
+            if (scan.identifierExists(variable)) {
                 scan.addSymbol(variable, "String");
                 scan.assignSymbol(variable);
                 scan.setSymbolInitialValue(variable, identifier);
@@ -190,8 +190,8 @@ public class SyntaxAnalysis {
                 if (scan.optional("SPECIAL_CHAR"))
                     prefix = "-";
                 this.arithConst();
-                for (int i = 0; i < symbols.size(); i++) {
-                    String identifier = (String) symbols.get(i);
+                for (Object symbol : symbols) {
+                    String identifier = (String) symbol;
                     scan.assignSymbol(identifier);
                     scan.setSymbolInitialValue(identifier, prefix + scan.nSem());
                 }
@@ -234,7 +234,7 @@ public class SyntaxAnalysis {
     private void factor() throws CompilerErrorException {
         if (scan.optional("IDENTIFIER")) {
             ptf(scan.nSem());
-            if (!scan.identifierExists(scan.nSem()))
+            if (scan.identifierExists(scan.nSem()))
                 throw new CompilerErrorException("Variable '" + scan.nSem() + "' must be decared before use!");
             if (!scan.identifierIsAssigned(scan.nSem()))
                 throw new CompilerErrorException("Variable '" + scan.nSem() + "' must be assigned a value before use!");
@@ -448,7 +448,7 @@ public class SyntaxAnalysis {
             String variable = this.var;
             while (!added) {
                 variable = this.var + (this.varcount++);
-                if (!scan.identifierExists(variable)) {
+                if (scan.identifierExists(variable)) {
                     scan.addSymbol(variable, "String");
                     scan.assignSymbol(variable);
                     identifier = "'" + identifier.substring(1, identifier.length() - 1) + "'";

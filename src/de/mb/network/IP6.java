@@ -6,5 +6,5 @@ package de.mb.network;
  * @author mb
  * @created December 11, 2001
  */
-public abstract class IP6 {
+abstract class IP6 {
 }

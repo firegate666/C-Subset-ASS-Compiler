@@ -10,7 +10,6 @@ public class JNumberedTextArea extends JScrollPane {
     private JList _lines;
     private Vector _numbers;
     private JAdvancedTextArea _text;
-    private JPanel _panel;
 
     /**
      * Public constructor
@@ -30,7 +29,7 @@ public class JNumberedTextArea extends JScrollPane {
      * Public default construtor
      */
     public JNumberedTextArea() {
-        _panel = new JPanel(new BorderLayout());
+        JPanel _panel = new JPanel(new BorderLayout());
         this.setViewportView(_panel);
 
         this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -66,7 +65,7 @@ public class JNumberedTextArea extends JScrollPane {
     /**
      * Disables the line count panel
      */
-    public void enableNumberedLines() {
+    private void enableNumberedLines() {
         _lines.setVisible(true);
         this.setLineCount();
     }
@@ -74,7 +73,7 @@ public class JNumberedTextArea extends JScrollPane {
     /**
      * Enables the line count panel
      */
-    public void disableNumberedLines() {
+    private void disableNumberedLines() {
         _lines.setVisible(false);
     }
 
@@ -82,7 +81,7 @@ public class JNumberedTextArea extends JScrollPane {
         if (_lines.isVisible()) {
             if (_numbers.size() < _text.getLineCount()) {
                 for (int i = _numbers.size(); i < _text.getLineCount(); i++)
-                    _numbers.add(new Integer(i + 1));
+                    _numbers.add(i + 1);
             } else if (_numbers.size() == _text.getLineCount()) {
             } else {
                 for (int i = _numbers.size() - 1;
@@ -145,7 +144,7 @@ public class JNumberedTextArea extends JScrollPane {
      * @param s       text to be added
      * @param newline if true, line break is added before new content
      */
-    public void addText(String s, boolean newline) {
+    private void addText(String s, boolean newline) {
         _text.addText(s, newline);
         this.setLineCount();
 
@@ -165,7 +164,7 @@ public class JNumberedTextArea extends JScrollPane {
      *
      * @param linenumber selected line
      */
-    public void selectLine(int linenumber) {
+    private void selectLine(int linenumber) {
         _text.selectLine(linenumber);
     }
 
@@ -173,7 +172,7 @@ public class JNumberedTextArea extends JScrollPane {
     class SelectLineListener implements MouseListener {
         private JNumberedTextArea app;
 
-        public SelectLineListener(JNumberedTextArea app) {
+        SelectLineListener(JNumberedTextArea app) {
             this.app = app;
         }
 
@@ -196,7 +195,7 @@ public class JNumberedTextArea extends JScrollPane {
         @Override
         public void mouseReleased(MouseEvent e) {
             JList l = (JList) e.getSource();
-            int line = ((Integer) l.getSelectedValue()).intValue();
+            int line = (Integer) l.getSelectedValue();
             app.selectLine(line);
         }
     }
@@ -204,7 +203,7 @@ public class JNumberedTextArea extends JScrollPane {
     class ChangeTextAction implements KeyListener {
         private JNumberedTextArea app;
 
-        public ChangeTextAction(JNumberedTextArea app) {
+        ChangeTextAction(JNumberedTextArea app) {
             this.app = app;
         }
 

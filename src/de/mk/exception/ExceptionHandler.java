@@ -16,7 +16,7 @@ public final class ExceptionHandler {
      * A handle to the unique Singleton instance.
      */
     static private ExceptionHandler _instance = null;
-    Exception ex;
+    private Exception ex;
     private ScrollText infoTF;
     private JTabbedPane tp;
     private JFrame frame = null;

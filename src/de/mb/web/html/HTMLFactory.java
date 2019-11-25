@@ -7,148 +7,148 @@ package de.mb.web.html;
  * @author mb
  * @created December 9, 2001
  */
-public class HTMLFactory extends Object implements IHTMLFactory {
+class HTMLFactory implements IHTMLFactory {
 
     /**
      * Description of the Field
      */
-    protected final static String A = "a ";
+    final static String A = "a ";
     /**
      * Description of the Field
      */
-    protected final static String B = "b ";
+    private final static String B = "b ";
     /**
      * Description of the Field
      */
-    protected final static String BODY = "body ";
+    private final static String BODY = "body ";
     /**
      * Description of the Field
      */
-    protected final static String BR = "br";
+    final static String BR = "br";
     /**
      * Description of the Field
      */
-    protected final static String DD = "dd ";
+    private final static String DD = "dd ";
     /**
      * Description of the Field
      */
-    protected final static String DIV = "div ";
+    private final static String DIV = "div ";
     /**
      * Description of the Field
      */
-    protected final static String DL = "dl ";
+    private final static String DL = "dl ";
     /**
      * Description of the Field
      */
-    protected final static String DT = "dt ";
+    private final static String DT = "dt ";
     /**
      * Description of the Field
      */
-    protected final static String FORM = "form ";
+    private final static String FORM = "form ";
     /**
      * Description of the Field
      */
-    protected final static String H = "h";
+    private final static String H = "h";
     /**
      * Description of the Field
      */
-    protected final static String HEAD = "head ";
+    private final static String HEAD = "head ";
     /**
      * Description of the Field
      */
-    protected final static String HR = "hr ";
+    final static String HR = "hr ";
     /**
      * Description of the Field
      */
-    protected final static String HTML = "html ";
+    private final static String HTML = "html ";
     /**
      * Description of the Field
      */
-    protected final static String I = "u ";
+    private final static String I = "u ";
     /**
      * Description of the Field
      */
-    protected final static String INPUT = "input ";
+    final static String INPUT = "input ";
     /**
      * Description of the Field
      */
-    protected final static String LI = "li";
+    final static String LI = "li";
     /**
      * Description of the Field
      */
-    protected final static String NOBR = "nobr ";
+    private final static String NOBR = "nobr ";
     /**
      * Description of the Field
      */
-    protected final static String OL = "ol";
+    private final static String OL = "ol";
     /**
      * Description of the Field
      */
-    protected final static String OPTION = "option ";
+    final static String OPTION = "option ";
     /**
      * Description of the Field
      */
-    protected final static String P = "p ";
+    private final static String P = "p ";
     /**
      * Description of the Field
      */
-    protected final static String S = "s ";
+    private final static String S = "s ";
     /**
      * Description of the Field
      */
-    protected final static String SELECT = "select ";
+    private final static String SELECT = "select ";
     /**
      * Description of the Field
      */
-    protected final static String SUB = "s ";
+    private final static String SUB = "s ";
     /**
      * Description of the Field
      */
-    protected final static String SUP = "s ";
+    private final static String SUP = "s ";
     /**
      * Description of the Field
      */
-    protected final static String TABLE = "table ";
+    private final static String TABLE = "table ";
     /**
      * Description of the Field
      */
-    protected final static String TAG_CLOSING = "/";
+    private final static String TAG_CLOSING = "/";
     /**
      * Description of the Field
      */
-    protected final static String TAG_END = ">";
+    private final static String TAG_END = ">";
     /**
      * Description of the Field
      */
-    protected final static String TAG_START = "<";
+    private final static String TAG_START = "<";
     /**
      * Description of the Field
      */
-    protected final static String TD = "td ";
+    private final static String TD = "td ";
     /**
      * Description of the Field
      */
-    protected final static String TEXTAREA = "textarea ";
+    private final static String TEXTAREA = "textarea ";
     /**
      * Description of the Field
      */
-    protected final static String TH = "th ";
+    private final static String TH = "th ";
     /**
      * Description of the Field
      */
-    protected final static String TITLE = "title ";
+    private final static String TITLE = "title ";
     /**
      * Description of the Field
      */
-    protected final static String TR = "tr ";
+    private final static String TR = "tr ";
     /**
      * Description of the Field
      */
-    protected final static String U = "i ";
+    private final static String U = "i ";
     /**
      * Description of the Field
      */
-    protected final static String UL = "ul";
+    private final static String UL = "ul";
 
     /**
      * Builds anchor tag.
@@ -157,7 +157,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      *                   returned
      * @return complete a-tag
      */
-    public static String createAnchor(String anchorName) {
+    static String createAnchor(String anchorName) {
         if (anchorName.equalsIgnoreCase(""))
             return "";
 
@@ -180,9 +180,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createBody(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = BODY;
 
-        result.append(buildTag(tagDefinition)).append("\n");
+        result.append(buildTag(BODY)).append("\n");
         result.append(innerText);
         result.append(buildTag(BODY, true)).append("\n");
 
@@ -201,9 +200,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
             return "";
 
         StringBuilder result = new StringBuilder();
-        String tagDefinition = B;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(B));
         result.append(innerText);
         result.append(buildTag(B, true));
 
@@ -219,7 +217,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param innerText Description of the Parameter
      * @return complete input-type=checkbox-tag
      */
-    public static String createCheckBox(
+    static String createCheckBox(
             String innerText,
             String name,
             String value,
@@ -253,9 +251,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createDescriptionList(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = DL;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(DL));
         result.append(innerText);
         result.append(buildTag(DL, true));
 
@@ -273,13 +270,11 @@ public class HTMLFactory extends Object implements IHTMLFactory {
             String descriptionTerm,
             String descriptionDescription) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition1 = DT;
-        String tagDefinition2 = DD;
 
-        result.append(buildTag(tagDefinition1));
+        result.append(buildTag(DT));
         result.append(descriptionTerm);
         result.append(buildTag(DT, true));
-        result.append(buildTag(tagDefinition2));
+        result.append(buildTag(DD));
         result.append(descriptionDescription);
         result.append(buildTag(DD, true));
 
@@ -346,9 +341,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createHead(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = HEAD;
 
-        result.append(buildTag(tagDefinition)).append("\n");
+        result.append(buildTag(HEAD)).append("\n");
         result.append(innerText);
         result.append(buildTag(HEAD, true)).append("\n");
 
@@ -385,7 +379,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param noshade set false if you want a shade
      * @return Description of the Return Value
      */
-    public static String createHorizontalRule(boolean noshade) {
+    static String createHorizontalRule(boolean noshade) {
         StringBuilder result = new StringBuilder();
         String tagDefinition = HR;
 
@@ -415,9 +409,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createHtml(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = HTML;
 
-        result.append(buildTag(tagDefinition)).append("\n");
+        result.append(buildTag(HTML)).append("\n");
         result.append(innerText);
         result.append(buildTag(HTML, true)).append("\n");
 
@@ -432,9 +425,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createItalic(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = I;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(I));
         result.append(innerText);
         result.append(buildTag(I, true));
 
@@ -446,11 +438,10 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      *
      * @return The br value
      */
-    public static String createLineBreak() {
+    static String createLineBreak() {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = BR;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(BR));
         result.append(buildTag(BR, true)).append("\n");
 
         return result.toString();
@@ -462,11 +453,10 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param innerText Description of the Parameter
      * @return The listItem value
      */
-    public static String createListItem(String innerText) {
+    static String createListItem(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = LI;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(LI));
         result.append(innerText);
         result.append(buildTag(LI, true));
 
@@ -481,9 +471,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createNobreak(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = NOBR;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(NOBR));
         result.append(innerText);
         result.append(buildTag(NOBR, true));
 
@@ -498,7 +487,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param selected  Description of the Parameter
      * @return Description of the Return Value
      */
-    public static String createOption(
+    static String createOption(
             String innerText,
             String value,
             boolean selected) {
@@ -534,9 +523,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createParagraph(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = P;
 
-        result.append("\n").append(buildTag(tagDefinition));
+        result.append("\n").append(buildTag(P));
         result.append(innerText);
         result.append(buildTag(P, true)).append("\n");
 
@@ -552,7 +540,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param checked   Description of the Parameter
      * @return Description of the Return Value
      */
-    public static String createRadioButton(
+    static String createRadioButton(
             String innerText,
             String name,
             String value,
@@ -604,7 +592,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param value Description of the Parameter
      * @return Description of the Return Value
      */
-    public static String createResetButton(String value) {
+    static String createResetButton(String value) {
         StringBuilder result = new StringBuilder();
         String tagDefinition = INPUT;
 
@@ -653,9 +641,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createStrikeThrough(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = S;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(S));
         result.append(innerText);
         result.append(buildTag(S, true));
 
@@ -670,9 +657,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createSub(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = SUB;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(SUB));
         result.append(innerText);
         result.append(buildTag(SUB, true));
 
@@ -685,7 +671,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param value Description of the Parameter
      * @return The submitButton value
      */
-    public static String createSubmitButtonCommon(String value) {
+    static String createSubmitButtonCommon(String value) {
         StringBuilder result = new StringBuilder();
         String tagDefinition = INPUT;
 
@@ -703,7 +689,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param imageSrc Description of the Parameter
      * @return Description of the Return Value
      */
-    public static String createSubmitButtonGraphical(String imageSrc) {
+    static String createSubmitButtonGraphical(String imageSrc) {
         StringBuilder result = new StringBuilder();
         String tagDefinition = INPUT;
 
@@ -723,9 +709,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createSup(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = SUP;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(SUP));
         result.append(innerText);
         result.append(buildTag(SUP, true));
 
@@ -800,9 +785,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
         }
 
         StringBuilder result = new StringBuilder();
-        String tagDefinition = TH;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(TH));
         result.append(innerText);
         result.append(buildTag(TH, true));
 
@@ -817,9 +801,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createTableRow(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = TR;
 
-        result.append("\n").append(buildTag(tagDefinition));
+        result.append("\n").append(buildTag(TR));
         result.append(innerText);
         result.append(buildTag(TR, true)).append("\n");
 
@@ -869,7 +852,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param readonly  Description of the Parameter
      * @return Description of the Return Value
      */
-    public static String createTextField(
+    static String createTextField(
             String value,
             String name,
             int fieldSize,
@@ -900,9 +883,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createTitle(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = TITLE;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(TITLE));
         result.append(innerText);
         result.append(buildTag(TITLE, true)).append("\n");
 
@@ -927,9 +909,8 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      */
     public static String createUnderline(String innerText) {
         StringBuilder result = new StringBuilder();
-        String tagDefinition = U;
 
-        result.append(buildTag(tagDefinition));
+        result.append(buildTag(U));
         result.append(innerText);
         result.append(buildTag(U, true));
 
@@ -943,7 +924,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param closing       Description of the Parameter
      * @return Description of the Return Value
      */
-    protected static String buildTag(String tagDefinition, boolean closing) {
+    static String buildTag(String tagDefinition, boolean closing) {
         tagDefinition = tagDefinition.trim();
         if (closing)
             return TAG_START + TAG_CLOSING + tagDefinition + TAG_END;
@@ -957,7 +938,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param tagDefinition Description of the Parameter
      * @return Description of the Return Value
      */
-    protected static String buildTag(String tagDefinition) {
+    private static String buildTag(String tagDefinition) {
         return buildTag(tagDefinition, false);
     }
 
@@ -968,7 +949,7 @@ public class HTMLFactory extends Object implements IHTMLFactory {
      * @param innerText Description of the Parameter
      * @return The orderedList value
      */
-    protected static String createList(String innerText, boolean ordered) {
+    private static String createList(String innerText, boolean ordered) {
         StringBuilder result = new StringBuilder();
         String tagDefinition;
 

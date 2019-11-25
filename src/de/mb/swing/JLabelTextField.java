@@ -40,7 +40,7 @@ public class JLabelTextField extends JPanel {
     /**
      * Shows text field in foreground
      */
-    public void showTextField() {
+    private void showTextField() {
         this.remove(this._jlabel);
         this.add(this._jtextfield);
         this.updateUI();
@@ -49,7 +49,7 @@ public class JLabelTextField extends JPanel {
     /**
      * Shows label in foreground
      */
-    public void showLabel() {
+    private void showLabel() {
         this.remove(this._jtextfield);
         this.add(this._jlabel);
         this.setText(this._jtextfield.getText());
@@ -59,7 +59,7 @@ public class JLabelTextField extends JPanel {
     /**
      * Sets text of textfield
      */
-    public void setText(String text) {
+    private void setText(String text) {
         this._jlabel.setText(text);
         this._jtextfield.setText(text);
     }
@@ -68,7 +68,7 @@ public class JLabelTextField extends JPanel {
     class LeaveTextFieldListener implements KeyListener {
         private JLabelTextField _app;
 
-        public LeaveTextFieldListener(JLabelTextField app) {
+        LeaveTextFieldListener(JLabelTextField app) {
             this._app = app;
         }
 
@@ -90,7 +90,7 @@ public class JLabelTextField extends JPanel {
     class ClickLabelListener implements MouseListener {
         private JLabelTextField _app;
 
-        public ClickLabelListener(JLabelTextField app) {
+        ClickLabelListener(JLabelTextField app) {
             this._app = app;
         }
 

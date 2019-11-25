@@ -23,14 +23,7 @@ public class CIPMenu {
     // Menü: File
     private JMenu file;
     private JMenuItem file_new;
-    private JMenuItem file_open;
-    private JMenuItem file_save;
-    private JMenuItem file_saveas;
-    private JMenuItem file_saveoutput;
     private JMenuItem file_close;
-    private JMenuItem file_exit;
-    // Menü: Compiler
-    private JMenu compiler;
     private JMenuItem compiler_all;
     private JMenuItem compiler_lexicalanalysis;
     private JMenuItem compiler_syntaxanalysis;
@@ -39,10 +32,6 @@ public class CIPMenu {
 
     // Menü: Ansicht
     private CIPMenuAnsicht view;
-
-    // Menü: Hilfe
-    private JMenu help;
-    private JMenuItem help_info;
 
     private CIPMenu() {
     }
@@ -122,24 +111,23 @@ public class CIPMenu {
     }
 
     private JMenuItem getJMenuItem(String desc) {
-        JMenuItem result = new JMenuItem(desc);
-        return result;
+        return new JMenuItem(desc);
     }
 
-    public JMenu getFileMenu() {
-        file_open = getJMenuItem(Ressource_Bundle.getString("menu_file_open")); //$NON-NLS-1$
+    private JMenu getFileMenu() {
+        JMenuItem file_open = getJMenuItem(Ressource_Bundle.getString("menu_file_open")); //$NON-NLS-1$
         file_open.addActionListener(new OpenFileAction(app));
 
-        file_save = getJMenuItem(Ressource_Bundle.getString("menu_file_save")); //$NON-NLS-1$
+        JMenuItem file_save = getJMenuItem(Ressource_Bundle.getString("menu_file_save")); //$NON-NLS-1$
         file_save.addActionListener(new SaveFileAction(app));
 
-        file_saveas = getJMenuItem(Ressource_Bundle.getString("menu_file_saveas")); //$NON-NLS-1$
+        JMenuItem file_saveas = getJMenuItem(Ressource_Bundle.getString("menu_file_saveas")); //$NON-NLS-1$
         file_saveas.addActionListener(new SaveAsFileAction(app));
 
-        file_saveoutput = getJMenuItem(Ressource_Bundle.getString("menu_file_saveoutput")); //$NON-NLS-1$
+        JMenuItem file_saveoutput = getJMenuItem(Ressource_Bundle.getString("menu_file_saveoutput")); //$NON-NLS-1$
         file_saveoutput.addActionListener(new SaveOutputAction(app));
 
-        file_exit = getJMenuItem(Ressource_Bundle.getString("menu_file_exit")); //$NON-NLS-1$
+        JMenuItem file_exit = getJMenuItem(Ressource_Bundle.getString("menu_file_exit")); //$NON-NLS-1$
         file_exit.addActionListener(new CloseFileAction(app));
 
         file = new JMenu(Ressource_Bundle.getString("menu_file")); //$NON-NLS-1$
@@ -153,7 +141,7 @@ public class CIPMenu {
         return file;
     }
 
-    public JMenu getCompilerMenu() {
+    private JMenu getCompilerMenu() {
         compiler_all = getJMenuItem(Ressource_Bundle.getString("menu_compiler_allanalysis")); //$NON-NLS-1$
         compiler_all.addActionListener(new AllAnalysisAction(app));
         compiler_all.setEnabled(false);
@@ -177,7 +165,8 @@ public class CIPMenu {
         compiler_codebuilder.addActionListener(new CodeBuilderAction(app));
         compiler_codebuilder.setEnabled(false);
 
-        compiler = new JMenu(Ressource_Bundle.getString("menu_compiler")); //$NON-NLS-1$
+        // Menü: Compiler
+        JMenu compiler = new JMenu(Ressource_Bundle.getString("menu_compiler")); //$NON-NLS-1$
         compiler.add(compiler_all);
         compiler.addSeparator();
         compiler.add(compiler_lexicalanalysis);
@@ -189,11 +178,12 @@ public class CIPMenu {
     }
 
     private JMenu getHelpMenu() {
-        help_info = getJMenuItem(Ressource_Bundle.getString("menu_help_info"));
+        JMenuItem help_info = getJMenuItem(Ressource_Bundle.getString("menu_help_info"));
         help_info.addActionListener(new DisplayInfoDialogAction(app));
         help_info.setEnabled(true);
 
-        help = new JMenu(Ressource_Bundle.getString("menu_help"));
+        // Menü: Hilfe
+        JMenu help = new JMenu(Ressource_Bundle.getString("menu_help"));
         help.add(help_info);
 
         return help;

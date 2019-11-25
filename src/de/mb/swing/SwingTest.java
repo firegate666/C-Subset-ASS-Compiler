@@ -14,7 +14,7 @@ public class SwingTest {
         class ClickButtonListener implements MouseListener {
             private JNumberedTextArea _n;
 
-            public ClickButtonListener(JNumberedTextArea n) {
+            ClickButtonListener(JNumberedTextArea n) {
                 _n = n;
             }
 
@@ -61,7 +61,7 @@ public class SwingTest {
         jdf.getContentPane().add(new JStandardStatusBar(), BorderLayout.SOUTH);
 
         jdf.setBounds(10, 10, 640, 480);
-        jdf.show();
+        jdf.setVisible(true);
 
     }
 

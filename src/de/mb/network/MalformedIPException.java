@@ -8,7 +8,7 @@ package de.mb.network;
  * To enable and disable the creation of type comments go to
  * Window>Preferences>Java>Code Generation.
  */
-public class MalformedIPException extends Exception {
+class MalformedIPException extends Exception {
 
     /**
      * Constructor for MalformedIPException.

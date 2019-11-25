@@ -114,18 +114,18 @@ public class JAdvancedTextArea extends JTextArea {
         if (linenumber > this.getLineCount()) ;
         ArrayList lf = new ArrayList();
         int index = 0;
-        lf.add(new Integer(index++));
+        lf.add(index++);
         while (index != -1) {
             index = this.getText().indexOf("\n", index);
             if (index != -1) {
-                lf.add(new Integer(index++));
+                lf.add(index++);
             }
 
         }
-        lf.add(new Integer(this.getText().length()));
+        lf.add(this.getText().length());
 
-        this.setSelectionStart(((Integer) lf.get(linenumber - 1)).intValue());
-        this.setSelectionEnd(((Integer) lf.get(linenumber)).intValue());
+        this.setSelectionStart((Integer) lf.get(linenumber - 1));
+        this.setSelectionEnd((Integer) lf.get(linenumber));
         this.grabFocus();
     }
 
@@ -150,7 +150,7 @@ public class JAdvancedTextArea extends JTextArea {
 
         private JAdvancedTextArea _app;
 
-        public PopupMenuListener(JAdvancedTextArea app) {
+        PopupMenuListener(JAdvancedTextArea app) {
             _app = app;
         }
 
@@ -181,12 +181,7 @@ public class JAdvancedTextArea extends JTextArea {
 
     class TextPopupMenu extends JPopupMenu {
 
-        private JMenuItem _copy;
-        private JMenuItem _paste;
-        private JMenuItem _cut;
-        private JMenuItem _delete;
-
-        public TextPopupMenu() {
+        TextPopupMenu() {
             super();
             initialize();
         }
@@ -197,10 +192,10 @@ public class JAdvancedTextArea extends JTextArea {
         }
 
         private void initialize() {
-            _copy = new JMenuItem("Kopieren");
-            _paste = new JMenuItem("Einfügen");
-            _cut = new JMenuItem("Ausschneiden");
-            _delete = new JMenuItem("Löschen");
+            JMenuItem _copy = new JMenuItem("Kopieren");
+            JMenuItem _paste = new JMenuItem("Einfügen");
+            JMenuItem _cut = new JMenuItem("Ausschneiden");
+            JMenuItem _delete = new JMenuItem("Löschen");
 
             this.add(_copy);
             this.add(_paste);

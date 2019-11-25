@@ -8,7 +8,7 @@ package de.mb.util;
  * @author
  * @version 1.0
  */
-public class NotEnoughNamesException extends RuntimeException {
+class NotEnoughNamesException extends RuntimeException {
 
     public NotEnoughNamesException(String msg) {
         super(msg);

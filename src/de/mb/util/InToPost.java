@@ -17,14 +17,13 @@ public final class InToPost {
     private String infix;
     private String postfix;
     private Collection _tokens;
-    private int infixctr;
     private int infixsize;
 
     public InToPost() {
         this("");
     }
 
-    public InToPost(String infix) {
+    private InToPost(String infix) {
         stack = new Stack();
         this.infix = infix;
         this.infixsize = this.infix.length();
@@ -93,25 +92,25 @@ public final class InToPost {
         return this.convert();
     }
 
-    public String convert() {
+    private String convert() {
         this.postfix = "";
         if (infix.equals("")) {
             this.postfix = this.infix;
             return postfix;
         }
 
-        infixctr = 0;
+        int infixctr = 0;
         char nextChar;
         while (infixctr < infixsize) {
             nextChar = infix.charAt(infixctr);
             if (this.isP_On(nextChar)) {
-                stack.addElement(new Character(nextChar));
+                stack.addElement(nextChar);
             } else if (this.isP_Off(nextChar)) {
                 while (!this
-                        .isP_On(((Character) (stack.peek())).charValue())) {
+                        .isP_On((Character) (stack.peek()))) {
                     infixctr++;
                     nextChar = infix.charAt(infixctr);
-                    postfix += ((Character) stack.pop()).charValue();
+                    postfix += (Character) stack.pop();
                 }
                 infixctr--;
                 stack.pop();
@@ -119,20 +118,20 @@ public final class InToPost {
                 postfix += nextChar;
             } else {
                 if (stack.isEmpty()) {
-                    stack.addElement(new Character(nextChar));
+                    stack.addElement(nextChar);
                 } else {
                     while ((!stack.isEmpty())
-                            && (prio(((Character) stack.peek()).charValue())
+                            && (prio((Character) stack.peek())
                             > prio(nextChar))) {
-                        postfix += ((Character) stack.pop()).charValue();
+                        postfix += (Character) stack.pop();
                     }
-                    stack.addElement(new Character(nextChar));
+                    stack.addElement(nextChar);
                 }
             }
             infixctr++;
         }
         while (!stack.isEmpty()) {
-            postfix += ((Character) stack.pop()).charValue();
+            postfix += (Character) stack.pop();
         }
 
         return postfix;

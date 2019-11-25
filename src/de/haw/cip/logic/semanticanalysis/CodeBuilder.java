@@ -66,9 +66,8 @@ public class CodeBuilder extends Automaton {
     }
 
     // Aktionen Operandenstack lesen
-    public String pop() {
-        String temp = (String) this.opStack.pop();
-        return temp;
+    private String pop() {
+        return (String) this.opStack.pop();
     }
 
     public void pullOpnd1() {
@@ -206,11 +205,11 @@ public class CodeBuilder extends Automaton {
         return this.asm;
     }
 
-    public void addMOV(char size, String a, String b) {
+    private void addMOV(char size, String a, String b) {
         asm += "\tMOVE." + size + " " + directOpnd(a) + "," + directOpnd(b) + "\n";
     }
 
-    public void addMOVAdr(String a, String b) {
+    private void addMOVAdr(String a, String b) {
         asm += "\tMOVEA.L " + directOpnd(a) + "," + directOpnd(b) + "\n";
     }
 
@@ -265,7 +264,7 @@ public class CodeBuilder extends Automaton {
         ArrayList list = new ArrayList();
 
         this.asm += "*\tPRINTANWEISUNG\n";
-        int opc = new Integer(pop()).intValue();
+        int opc = new Integer(pop());
 
         for (int i = 0; i < opc; i++) {
             String operand = pop();
@@ -318,7 +317,7 @@ public class CodeBuilder extends Automaton {
         this.addMOV('W', "D1", varName);
     }
 
-    public void addTrap(int trapNumber) {
+    private void addTrap(int trapNumber) {
         asm += "\tTRAP #" + trapNumber + "\n";
     }
 
@@ -424,7 +423,7 @@ public class CodeBuilder extends Automaton {
     public void reset(String s) {
     }
 
-    protected void changeState(State newState) {
+    void changeState(State newState) {
         actState = newState;
     }
 

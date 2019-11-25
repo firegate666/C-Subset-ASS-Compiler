@@ -40,7 +40,7 @@ public final class Word extends State {
         handleVar = null;
     }
 
-    protected void initialize() {
+    private void initialize() {
         keywords.add("const");
         keywords.add("int");
         keywords.add("if");
@@ -51,7 +51,7 @@ public final class Word extends State {
         keywords.add("scanf");
     }
 
-    protected void tokenFound(Scanner a, char ch, boolean store) {
+    private void tokenFound(Scanner a, char ch, boolean store) {
         String buffer = a.getBufferCopy();
         String token = "";
 

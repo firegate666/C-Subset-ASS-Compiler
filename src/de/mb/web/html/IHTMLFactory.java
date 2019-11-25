@@ -6,5 +6,5 @@ package de.mb.web.html;
  * @author mb
  * @created December 13, 2001
  */
-public interface IHTMLFactory {
+interface IHTMLFactory {
 }

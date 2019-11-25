@@ -19,9 +19,6 @@ public class DeclarationBuilder implements Singleton {
 
     private static DeclarationBuilder handleVar = null;
 
-    private final String _STRINGCONST = "DC.B";
-    private final String _INTCONST = "DC.W";
-
     private DeclarationBuilder() {
     }
 
@@ -46,6 +43,8 @@ public class DeclarationBuilder implements Singleton {
         // IDENTIFIER
         result += symbol.get_identifier();
 
+        String _INTCONST = "DC.W";
+        String _STRINGCONST = "DC.B";
         if (symbol.get_type() == null ? "String" == null : symbol.get_type().equals("String"))
             result += "\t" + _STRINGCONST;
         else if (symbol.get_type() == null ? "int" == null : symbol.get_type().equals("int"))

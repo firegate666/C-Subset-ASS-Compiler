@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -29,7 +28,7 @@ public class MultiReader {
         return result;
     }
 
-    public static String file2string(String filename) throws IOException {
+    private static String file2string(String filename) throws IOException {
         String result = "";
         File file = new File(filename);
         FileInputStream fis = new FileInputStream(file);

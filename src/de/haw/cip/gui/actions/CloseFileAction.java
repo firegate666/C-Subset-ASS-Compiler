@@ -3,7 +3,6 @@ package de.haw.cip.gui.actions;
 import de.haw.cip.gui.CIPWindow;
 import de.mb.swing.actions.CloseAction;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**

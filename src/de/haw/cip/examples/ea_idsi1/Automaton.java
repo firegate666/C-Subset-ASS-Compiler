@@ -7,10 +7,6 @@ import java.util.Iterator;
 
 public class Automaton { // Der IDSI-Automat
 
-    private char actChar = ' ';
-
-    private LsdClass actClass = null; // (1)
-
     private State actState = null;
     private String name = "noName";
     private ArrayList buffer = new ArrayList();
@@ -35,10 +31,11 @@ public class Automaton { // Der IDSI-Automat
 
         for (int i = 0; i < actString.length(); i++) {
 
-            actChar = actString.charAt(i);
+            char actChar = actString.charAt(i);
 
             // Klassifizierung des aktuellen Zeichens
-            actClass = LsdClass.arr[actChar];
+            // (1)
+            LsdClass actClass = LsdClass.arr[actChar];
 
             // Leider kein switch moeglich
 
@@ -67,15 +64,13 @@ public class Automaton { // Der IDSI-Automat
     }
 
     public void store(char ch) {
-        buffer.add(new Character(ch));
+        buffer.add(ch);
         // Prt.ln(buffer);
     }
 
     public void restore(char ch) {
         // ch ignored
-        Iterator it = buffer.iterator();
-        while (it.hasNext())
-            Prt.st(it.next().toString());
+        for (Object o : buffer) Prt.st(o.toString());
         Prt.ln();
         buffer.clear();
         Prt.ln("!!!");
@@ -101,11 +96,13 @@ public class Automaton { // Der IDSI-Automat
         // LsdClass ist eine innere Klasse des Automaten
 
         // Klassifizierung der ersten 128 Zeichen mittels arr
-        public final static LsdClass[] arr = new LsdClass[128];
-        public final static LsdClass // Erzeugung der einzig
-                OTHER = new LsdClass(0), // moeglichen Objekte
-                LETTER = new LsdClass(1), // von lsdClass
-                SIGN = new LsdClass(2), DIGIT = new LsdClass(3), ETX = new LsdClass(4);
+        final static LsdClass[] arr = new LsdClass[128];
+        final static LsdClass // Erzeugung der einzig
+                OTHER = new LsdClass(0); // moeglichen Objekte
+                final static LsdClass LETTER = new LsdClass(1); // von lsdClass
+                final static LsdClass SIGN = new LsdClass(2);
+        final static LsdClass DIGIT = new LsdClass(3);
+        final static LsdClass ETX = new LsdClass(4);
 
         static { // Static Block, siehe Kap. 4.4.4
             char c;

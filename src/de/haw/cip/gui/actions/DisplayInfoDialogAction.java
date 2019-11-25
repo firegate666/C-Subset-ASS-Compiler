@@ -25,7 +25,7 @@ public class DisplayInfoDialogAction extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         JInfoDialog d = new JInfoDialog(getApp(), getApp().appTitle(), getApp().appVersion(), getApp().appAuthors());
-        d.show();
+        d.setVisible(true);
 
     }
 

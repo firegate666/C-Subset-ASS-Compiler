@@ -13,15 +13,15 @@ public abstract class State {
     // Transformiert die Aufrufe der Zustaende
     // in Aufrufe des Automaten, spez. Up-Casting newState
 
-    protected void changeState(Automaton a, State newState) {
+    void changeState(Automaton a, State newState) {
         a.changeState(newState);
     }
 
-    protected void store(Automaton a, char ch) {
+    void store(Automaton a, char ch) {
         a.store(ch);
     }
 
-    protected void restore(Automaton a, String parity) {
+    void restore(Automaton a, String parity) {
         a.restore(parity);
     }
 
