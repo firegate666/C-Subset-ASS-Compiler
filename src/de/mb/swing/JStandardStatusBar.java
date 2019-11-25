@@ -1,20 +1,16 @@
 package de.mb.swing;
 
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-
 /**
  * Standard status bar with three containers left, center and right. The right
  * panel contains a system clock panel, left and center can be used freely.
- * 
- * @author Marco Behnke
  *
+ * @author Marco Behnke
  */
 public class JStandardStatusBar extends JStatusBar {
 
@@ -38,7 +34,7 @@ public class JStandardStatusBar extends JStatusBar {
 
     /**
      * Return the left panel of the status bar.
-     * 
+     *
      * @return left panel
      */
     public JPanel getLeft() {
@@ -49,7 +45,7 @@ public class JStandardStatusBar extends JStatusBar {
 
     /**
      * Return the center panel of the status bar.
-     * 
+     *
      * @return center panel
      */
     public JPanel getCenter() {
@@ -87,7 +83,7 @@ public class JStandardStatusBar extends JStatusBar {
         /**
          * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
          */
-		@Override
+        @Override
         public void actionPerformed(ActionEvent e) {
             _app.setTime();
         }

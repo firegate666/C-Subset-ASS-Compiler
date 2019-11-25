@@ -5,14 +5,14 @@
 package de.mb.util;
 
 /**
- * @version 	1.0
  * @author
+ * @version 1.0
  */
-public class NotEnoughNamesException extends RuntimeException{
+public class NotEnoughNamesException extends RuntimeException {
 
-	public NotEnoughNamesException(String msg) {
-	 		super(msg);
-	    
-	}
+    public NotEnoughNamesException(String msg) {
+        super(msg);
+
+    }
 
 }

@@ -2,11 +2,11 @@ package de.haw.cip.gui;
 
 import de.haw.cip.logic.Symboltable;
 
-import javax.swing.JTable;
+import javax.swing.*;
 
 /**
  * @author Administrator
- *
+ * <p>
  * To change this generated comment edit the template variable "typecomment":
  * Window>Preferences>Java>Templates.
  * To enable and disable the creation of type comments go to
@@ -14,20 +14,20 @@ import javax.swing.JTable;
  */
 public class JSymboltable extends JTable {
 
-	private Symboltable symboltable;
+    private Symboltable symboltable;
 
-	public JSymboltable() {
-		super(40,5);
-	}
-	
-	public JSymboltable(Symboltable symbols) {
-		super(symbols.rowData(),symbols.columnNames() );
-		
-		this.symboltable = symbols;
-	}
-	
-	public String getText() {
-		return symboltable.toString();
-	}
-		
+    public JSymboltable() {
+        super(40, 5);
+    }
+
+    public JSymboltable(Symboltable symbols) {
+        super(symbols.rowData(), symbols.columnNames());
+
+        this.symboltable = symbols;
+    }
+
+    public String getText() {
+        return symboltable.toString();
+    }
+
 }

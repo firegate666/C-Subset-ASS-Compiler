@@ -1,38 +1,20 @@
 package de.mb.swing;
 
-import java.awt.AWTEvent;
-import java.awt.Dialog;
-import java.awt.Frame;
-import java.awt.GraphicsConfiguration;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
  * @author Marco Behnke
- *
  */
 public abstract class JAbstractDialog extends Dialog {
 
     protected int _width;
     protected int _height;
 
-    private void initialize() {
-        this.addWindowListener(new DialogListener());
-        this.setBounds(this.x(), this.y(), _width, _height);
-    }
-    private int x() {
-        return Toolkit.getDefaultToolkit().getScreenSize().width / 2
-            - _width / 2;
-    }
-
-    private int y() {
-        return Toolkit.getDefaultToolkit().getScreenSize().height / 2
-            - _height / 2;
-    }
-
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      */
     public JAbstractDialog(Frame owner) {
@@ -42,6 +24,7 @@ public abstract class JAbstractDialog extends Dialog {
 
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      * @param modal
      */
@@ -52,6 +35,7 @@ public abstract class JAbstractDialog extends Dialog {
 
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      * @param title
      */
@@ -62,6 +46,7 @@ public abstract class JAbstractDialog extends Dialog {
 
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      * @param title
      * @param modal
@@ -73,22 +58,24 @@ public abstract class JAbstractDialog extends Dialog {
 
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      * @param title
      * @param modal
      * @param gc
      */
     public JAbstractDialog(
-        Frame owner,
-        String title,
-        boolean modal,
-        GraphicsConfiguration gc) {
+            Frame owner,
+            String title,
+            boolean modal,
+            GraphicsConfiguration gc) {
         super(owner, title, modal, gc);
         this.initialize();
     }
 
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      */
     public JAbstractDialog(Dialog owner) {
@@ -98,6 +85,7 @@ public abstract class JAbstractDialog extends Dialog {
 
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      * @param title
      */
@@ -108,6 +96,7 @@ public abstract class JAbstractDialog extends Dialog {
 
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      * @param title
      * @param modal
@@ -119,34 +108,53 @@ public abstract class JAbstractDialog extends Dialog {
 
     /**
      * Constructor for JAbstractDialog.
+     *
      * @param owner
      * @param title
      * @param modal
      * @param gc
      */
     public JAbstractDialog(
-        Dialog owner,
-        String title,
-        boolean modal,
-        GraphicsConfiguration gc) {
+            Dialog owner,
+            String title,
+            boolean modal,
+            GraphicsConfiguration gc) {
         super(owner, title, modal, gc);
         this.initialize();
     }
 
+    private void initialize() {
+        this.addWindowListener(new DialogListener());
+        this.setBounds(this.x(), this.y(), _width, _height);
+    }
+
+    private int x() {
+        return Toolkit.getDefaultToolkit().getScreenSize().width / 2
+                - _width / 2;
+    }
+
+    private int y() {
+        return Toolkit.getDefaultToolkit().getScreenSize().height / 2
+                - _height / 2;
+    }
+
     // Internal Classes
     class DialogCloseAction {
-        private void action(AWTEvent e) {
-            ((Dialog) e.getSource()).dispose();
-        }
         public DialogCloseAction(AWTEvent e) {
             action(e);
         }
+
+        private void action(AWTEvent e) {
+            ((Dialog) e.getSource()).dispose();
+        }
     }
+
     class DialogListener extends WindowAdapter {
         public DialogListener() {
             super();
         }
-		@Override
+
+        @Override
         public void windowClosing(WindowEvent e) {
             new DialogCloseAction(e);
         }

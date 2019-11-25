@@ -1,21 +1,17 @@
 package de.mb.swing;
 
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 /**
  * The JLabelTextField can alter its outfit between Label and TextField by clicking on it.
  * After entering text an commiting it by return, the outfit switches back.
- * 
- * @author Marco Behnke
  *
+ * @author Marco Behnke
  */
 public class JLabelTextField extends JPanel {
 
@@ -24,6 +20,7 @@ public class JLabelTextField extends JPanel {
 
     /**
      * Public constructor
+     *
      * @param text Default text
      */
     public JLabelTextField(String text) {
@@ -48,6 +45,7 @@ public class JLabelTextField extends JPanel {
         this.add(this._jtextfield);
         this.updateUI();
     }
+
     /**
      * Shows label in foreground
      */
@@ -69,14 +67,20 @@ public class JLabelTextField extends JPanel {
     // Internal classes
     class LeaveTextFieldListener implements KeyListener {
         private JLabelTextField _app;
+
         public LeaveTextFieldListener(JLabelTextField app) {
             this._app = app;
         }
-		@Override
-        public void keyPressed(KeyEvent e) {}
-		@Override
-        public void keyReleased(KeyEvent e) {}
-		@Override
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+        }
+
+        @Override
         public void keyTyped(KeyEvent e) {
             if ((int) e.getKeyChar() == 10)
                 this._app.showLabel();
@@ -85,20 +89,30 @@ public class JLabelTextField extends JPanel {
 
     class ClickLabelListener implements MouseListener {
         private JLabelTextField _app;
+
         public ClickLabelListener(JLabelTextField app) {
             this._app = app;
         }
-		@Override
+
+        @Override
         public void mouseClicked(MouseEvent e) {
             this._app.showTextField();
         }
-		@Override
-        public void mouseEntered(MouseEvent e) {}
-		@Override
-        public void mouseExited(MouseEvent e) {}
-		@Override
-        public void mousePressed(MouseEvent e) {}
-		@Override
-        public void mouseReleased(MouseEvent e) {}
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
     }
 }

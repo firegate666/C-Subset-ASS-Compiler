@@ -1,12 +1,7 @@
 package de.mb.swing;
 
-import java.awt.BorderLayout;
-import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 public class JInfoDialog extends JAbstractDialog {
 
@@ -20,16 +15,17 @@ public class JInfoDialog extends JAbstractDialog {
 
     /**
      * Public constructor
+     *
      * @param owner
-     * @param title Application name
+     * @param title   Application name
      * @param version Application version
      * @param authors Authors
      */
     public JInfoDialog(
-        Frame owner,
-        String title,
-        String version,
-        String authors) {
+            Frame owner,
+            String title,
+            String version,
+            String authors) {
         super(owner);
 
         _width = 350;
@@ -55,6 +51,7 @@ public class JInfoDialog extends JAbstractDialog {
 
     }
 
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
+    }
 
 }

@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 
 /**
  * @author Administrator
- *
+ * <p>
  * To change this generated comment edit the template variable "typecomment":
  * Window>Preferences>Java>Templates.
  * To enable and disable the creation of type comments go to
@@ -14,19 +14,20 @@ import java.awt.event.ActionEvent;
  */
 public class SwitchSourceVisibleAction extends AbstractAction {
 
-	/**
-	 * Constructor for SwitchSourceVisibleAction.
-	 * @param app
-	 */
-	public SwitchSourceVisibleAction(CIPWindow app) {
-		super(app);
-	}
+    /**
+     * Constructor for SwitchSourceVisibleAction.
+     *
+     * @param app
+     */
+    public SwitchSourceVisibleAction(CIPWindow app) {
+        super(app);
+    }
 
-	/**
-	 * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
-	 */
-	public void actionPerformed(ActionEvent e) {
-		getApp().switchSourceVisible();
-	}
+    /**
+     * @see java.awt.event.ActionListener#actionPerformed(ActionEvent)
+     */
+    public void actionPerformed(ActionEvent e) {
+        getApp().switchSourceVisible();
+    }
 
 }

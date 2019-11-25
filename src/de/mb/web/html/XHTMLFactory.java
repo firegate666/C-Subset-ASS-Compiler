@@ -2,25 +2,25 @@ package de.mb.web.html;
 
 
 /**
- *  <code>XHTMLFactory</code> returns validated variable XHTML statements.
+ * <code>XHTMLFactory</code> returns validated variable XHTML statements.
  *
- * @author     mb
- * @created    December 13, 2001
+ * @author mb
+ * @created December 13, 2001
  */
 public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
 
     /**
-     *  if true, lazy xhtml-tags are used if possibly. if false every openeing
-     *  tag is closed by normal closing tag
+     * if true, lazy xhtml-tags are used if possibly. if false every openeing
+     * tag is closed by normal closing tag
      */
     protected static boolean lazyXHTML = false;
 
     /**
-     *  Builds anchor tag. Can be lazy tag.
+     * Builds anchor tag. Can be lazy tag.
      *
-     * @param  anchorName  reference/anchor name, if empty no new tag is
-     *      returned
-     * @return             complete a-tag
+     * @param anchorName reference/anchor name, if empty no new tag is
+     *                   returned
+     * @return complete a-tag
      */
     public static String createAnchor(String anchorName) {
         if (anchorName.equalsIgnoreCase("")) {
@@ -31,9 +31,7 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
-        }
-
-        else {
+        } else {
             result.append(buildTag(A, true));
         }
 
@@ -41,21 +39,21 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  Creates a single checkbox.tag
+     * Creates a single checkbox.tag
      *
-     * @param  name       name of tag; to be referenced in form-tag
-     * @param  value      item-value
-     * @param  checked    is this box checked?
-     * @param  innerText  item description, that is pu behind the checkbox
-     * @return            complete input-type=checkbox-tag
+     * @param name      name of tag; to be referenced in form-tag
+     * @param value     item-value
+     * @param checked   is this box checked?
+     * @param innerText item description, that is pu behind the checkbox
+     * @return complete input-type=checkbox-tag
      */
     public static String createCheckBox(
-        String innerText,
-        String name,
-        String value,
-        boolean checked) {
+            String innerText,
+            String name,
+            String value,
+            boolean checked) {
         StringBuilder result =
-            new StringBuilder(HTMLFactory.createCheckBox(innerText, name, value, checked));
+                new StringBuilder(HTMLFactory.createCheckBox(innerText, name, value, checked));
 
         result.append(buildTag(INPUT, true));
 
@@ -63,20 +61,18 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  Return hr-tag. Can be lazy tag.
+     * Return hr-tag. Can be lazy tag.
      *
-     * @param  noshade  set false if you want a shade
-     * @return          complete hr-tag
+     * @param noshade set false if you want a shade
+     * @return complete hr-tag
      */
     public static String createHorizontalRule(boolean noshade) {
         StringBuilder result =
-            new StringBuilder(HTMLFactory.createHorizontalRule(noshade));
+                new StringBuilder(HTMLFactory.createHorizontalRule(noshade));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
-        }
-
-        else {
+        } else {
             result.append(buildTag(HR, true));
         }
 
@@ -84,18 +80,16 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  return br-tag Can be lazy tag.
+     * return br-tag Can be lazy tag.
      *
-     * @return    complete br-tag
+     * @return complete br-tag
      */
     public static String createLineBreak() {
         StringBuilder result = new StringBuilder(HTMLFactory.createLineBreak());
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
-        }
-
-        else {
+        } else {
             result.append(buildTag(BR, true));
         }
 
@@ -103,10 +97,10 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  returns li-tag
+     * returns li-tag
      *
-     * @param  innerText  item-description that stands behind li-tag
-     * @return            complete li-tag
+     * @param innerText item-description that stands behind li-tag
+     * @return complete li-tag
      */
     public static String createListItem(String innerText) {
         StringBuilder result = new StringBuilder(HTMLFactory.createListItem(innerText));
@@ -117,19 +111,19 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  returns option-tag which can be used in select tag.
+     * returns option-tag which can be used in select tag.
      *
-     * @param  innerText  item description that stands behind option-tag
-     * @param  value      value that is returned if form is posted
-     * @param  selected   if true, that box is checked
-     * @return            complete option-tag
+     * @param innerText item description that stands behind option-tag
+     * @param value     value that is returned if form is posted
+     * @param selected  if true, that box is checked
+     * @return complete option-tag
      */
     public static String createOption(
-        String innerText,
-        String value,
-        boolean selected) {
+            String innerText,
+            String value,
+            boolean selected) {
         StringBuilder result =
-            new StringBuilder(HTMLFactory.createOption(innerText, value, selected));
+                new StringBuilder(HTMLFactory.createOption(innerText, value, selected));
 
         result.append(buildTag(OPTION, true));
 
@@ -137,22 +131,22 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  Creates input-tag (type radiobutton).
+     * Creates input-tag (type radiobutton).
      *
-     * @param  innerText  item description that stands behind input tag
-     * @param  name       name of tag; to be referenced in form-tag
-     * @param  value      value that is returned if form is posted
-     * @param  checked    if true, that box is checked
-     * @return            complete input-tag (type radiobutton)
+     * @param innerText item description that stands behind input tag
+     * @param name      name of tag; to be referenced in form-tag
+     * @param value     value that is returned if form is posted
+     * @param checked   if true, that box is checked
+     * @return complete input-tag (type radiobutton)
      */
     public static String createRadioButton(
-        String innerText,
-        String name,
-        String value,
-        boolean checked) {
+            String innerText,
+            String name,
+            String value,
+            boolean checked) {
         StringBuilder result =
-            new StringBuilder(
-                HTMLFactory.createRadioButton(innerText, name, value, checked));
+                new StringBuilder(
+                        HTMLFactory.createRadioButton(innerText, name, value, checked));
 
         result.append(buildTag(INPUT, true));
 
@@ -160,19 +154,17 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  Creates input-tag (type resetbutton). Can be lazy tag.
+     * Creates input-tag (type resetbutton). Can be lazy tag.
      *
-     * @param  value  Description that stands on the button
-     * @return        complete input-tag (type resetbutton)
+     * @param value Description that stands on the button
+     * @return complete input-tag (type resetbutton)
      */
     public static String createResetButton(String value) {
         StringBuilder result = new StringBuilder(HTMLFactory.createResetButton(value));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
-        }
-
-        else {
+        } else {
             result.append(buildTag(INPUT, true));
         }
 
@@ -180,20 +172,18 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  Creates input-tag (type submitbutton). Can be lazy tag.
+     * Creates input-tag (type submitbutton). Can be lazy tag.
      *
-     * @param  value  Description that stands on the button
-     * @return        complete input-tag (type submitbutton)
+     * @param value Description that stands on the button
+     * @return complete input-tag (type submitbutton)
      */
     public static String createSubmitButtonCommon(String value) {
         StringBuilder result =
-            new StringBuilder(HTMLFactory.createSubmitButtonCommon(value));
+                new StringBuilder(HTMLFactory.createSubmitButtonCommon(value));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
-        }
-
-        else {
+        } else {
             result.append(buildTag(INPUT, true));
         }
 
@@ -201,20 +191,18 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  Creates input-tag (type graphical submitbutton). Can be lazy tag.
+     * Creates input-tag (type graphical submitbutton). Can be lazy tag.
      *
-     * @param  imageSrc  src location that point to image
-     * @return           complete input-tag (type graphical submitbutton)
+     * @param imageSrc src location that point to image
+     * @return complete input-tag (type graphical submitbutton)
      */
     public static String createSubmitButtonGraphical(String imageSrc) {
         StringBuilder result =
-            new StringBuilder(HTMLFactory.createSubmitButtonGraphical(imageSrc));
+                new StringBuilder(HTMLFactory.createSubmitButtonGraphical(imageSrc));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
-        }
-
-        else {
+        } else {
             result.append(buildTag(INPUT, true));
         }
 
@@ -222,30 +210,28 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  Creates input-tag (type textfield). Can be lazy tag.
+     * Creates input-tag (type textfield). Can be lazy tag.
      *
-     * @param  value      default text
-     * @param  name       name of tag; to be referenced in form-tag
-     * @param  fieldSize  size of text field
-     * @param  maxChar    maximum count of chars that can be entered
-     * @param  readonly   sets textfield to readonly
-     * @return            complete input-tag (type textfield)
+     * @param value     default text
+     * @param name      name of tag; to be referenced in form-tag
+     * @param fieldSize size of text field
+     * @param maxChar   maximum count of chars that can be entered
+     * @param readonly  sets textfield to readonly
+     * @return complete input-tag (type textfield)
      */
     public static String createTextField(
-        String value,
-        String name,
-        int fieldSize,
-        int maxChar,
-        boolean readonly) {
+            String value,
+            String name,
+            int fieldSize,
+            int maxChar,
+            boolean readonly) {
         StringBuilder result =
-            new StringBuilder(
-                HTMLFactory.createTextField(value, name, fieldSize, maxChar, readonly));
+                new StringBuilder(
+                        HTMLFactory.createTextField(value, name, fieldSize, maxChar, readonly));
 
         if (lazyXHTML) {
             result.insert(result.length(), " \\");
-        }
-
-        else {
+        } else {
             result.append(buildTag(INPUT, true));
         }
 
@@ -253,9 +239,9 @@ public class XHTMLFactory extends HTMLFactory implements IHTMLFactory {
     }
 
     /**
-     *  Sets the lazyXHTML attribute of the XHTMLFactory class
+     * Sets the lazyXHTML attribute of the XHTMLFactory class
      *
-     * @param  lazy  The new lazyXHTML value
+     * @param lazy The new lazyXHTML value
      */
     public static void setLazyXHTML(boolean lazy) {
         lazyXHTML = lazy;

@@ -1,19 +1,14 @@
 package de.mb.swing;
 
-import java.awt.Point;
+import javax.swing.*;
+import javax.swing.text.Document;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.text.Document;
-
 /**
  * @author Marco Behnke
- *
  */
 public class JAdvancedTextArea extends JTextArea {
 
@@ -29,7 +24,7 @@ public class JAdvancedTextArea extends JTextArea {
 
     /**
      * Public constructor
-     * 
+     *
      * @param text
      */
     public JAdvancedTextArea(String text) {
@@ -39,7 +34,7 @@ public class JAdvancedTextArea extends JTextArea {
 
     /**
      * Public constructor
-     * 
+     *
      * @param rows
      * @param columns
      */
@@ -50,7 +45,7 @@ public class JAdvancedTextArea extends JTextArea {
 
     /**
      * Public constructor
-     * 
+     *
      * @param text
      * @param rows
      * @param columns
@@ -62,7 +57,7 @@ public class JAdvancedTextArea extends JTextArea {
 
     /**
      * Public constructor
-     * 
+     *
      * @param doc
      */
     public JAdvancedTextArea(Document doc) {
@@ -73,23 +68,25 @@ public class JAdvancedTextArea extends JTextArea {
     /**
      * Public constructor
      * .
+     *
      * @param doc
      * @param text
      * @param rows
      * @param columns
      */
     public JAdvancedTextArea(
-        Document doc,
-        String text,
-        int rows,
-        int columns) {
+            Document doc,
+            String text,
+            int rows,
+            int columns) {
         super(doc, text, rows, columns);
         initialize();
     }
 
     /**
      * Adds content to text area
-     * @param s text to be added
+     *
+     * @param s       text to be added
      * @param newline if true, line break is added before new content
      */
     public void addText(String s, boolean newline) {
@@ -101,6 +98,7 @@ public class JAdvancedTextArea extends JTextArea {
 
     /**
      * Adds content to text area
+     *
      * @param s text to be added
      */
     public void addText(String s) {
@@ -109,10 +107,11 @@ public class JAdvancedTextArea extends JTextArea {
 
     /**
      * Selects the given line and highlights all contents of it.
+     *
      * @param linenumber line to select
      */
     public void selectLine(int linenumber) {
-        if (linenumber > this.getLineCount());
+        if (linenumber > this.getLineCount()) ;
         ArrayList lf = new ArrayList();
         int index = 0;
         lf.add(new Integer(index++));
@@ -155,7 +154,7 @@ public class JAdvancedTextArea extends JTextArea {
             _app = app;
         }
 
-		@Override
+        @Override
         public void mouseClicked(MouseEvent e) {
             if (e.getButton() == 3) {
                 Point p = e.getPoint();
@@ -163,14 +162,21 @@ public class JAdvancedTextArea extends JTextArea {
             }
         }
 
-		@Override
-        public void mouseEntered(MouseEvent e) {}
-		@Override
-        public void mouseExited(MouseEvent e) {}
-		@Override
-        public void mousePressed(MouseEvent e) {}
-		@Override
-        public void mouseReleased(MouseEvent e) {}
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
     }
 
     class TextPopupMenu extends JPopupMenu {

@@ -10,7 +10,7 @@ import java.io.File;
 
 /**
  * @author behnke_m
- *
+ * <p>
  * To change this generated comment edit the template variable "typecomment":
  * Window>Preferences>Java>Templates.
  * To enable and disable the creation of type comments go to
@@ -18,26 +18,25 @@ import java.io.File;
  */
 public class SaveOutputAction extends AbstractAction {
 
-	public SaveOutputAction(CIPWindow app) {
-		super(app);
-	}
+    public SaveOutputAction(CIPWindow app) {
+        super(app);
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		File f = new FileDialog(Ressource_Bundle.getString("dialog_choosedestinationfile")).getFile(); //$NON-NLS-1$
-		if(f==null) return;
-		String s = (getApp().getSelectedSource());
-		if(f==null) {
-			return;
-		}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        File f = new FileDialog(Ressource_Bundle.getString("dialog_choosedestinationfile")).getFile(); //$NON-NLS-1$
+        if (f == null) return;
+        String s = (getApp().getSelectedSource());
+        if (f == null) {
+            return;
+        }
 
-		try{
-			FileWriter.writeToFile(f,s);
-		} catch (Exception ex) {
-			ExceptionHandler.instance(ex);
-		}		
-	}
-
+        try {
+            FileWriter.writeToFile(f, s);
+        } catch (Exception ex) {
+            ExceptionHandler.instance(ex);
+        }
+    }
 
 
 }

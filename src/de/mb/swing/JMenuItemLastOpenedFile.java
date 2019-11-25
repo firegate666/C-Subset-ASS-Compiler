@@ -1,12 +1,10 @@
 package de.mb.swing;
 
+import javax.swing.*;
 import java.io.File;
-
-import javax.swing.JMenuItem;
 
 /**
  * @author Marco Behnke
- *
  */
 public class JMenuItemLastOpenedFile extends JMenuItem {
 
@@ -15,8 +13,8 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
 
     /**
      * Public constructor
-     * 
-     * @param file Filepointer to store with
+     *
+     * @param file  Filepointer to store with
      * @param index Leading number
      */
     public JMenuItemLastOpenedFile(File file, int index) {
@@ -25,8 +23,8 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
 
     /**
      * Public constructor
-     * 
-     * @param text Filename to store with
+     *
+     * @param text  Filename to store with
      * @param index Leading number
      */
     public JMenuItemLastOpenedFile(String text, int index) {
@@ -37,17 +35,8 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
     }
 
     /**
-     * Set filename associated with menu item
-     * 
-     * @param pathname Filename
-     */
-    public void setFilename(String pathname) {
-        this._filename = pathname;
-    }
-
-    /**
      * Get filename associated with menu item
-     * 
+     *
      * @return absolute pathname
      */
     public String getFilename() {
@@ -55,8 +44,17 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
     }
 
     /**
+     * Set filename associated with menu item
+     *
+     * @param pathname Filename
+     */
+    public void setFilename(String pathname) {
+        this._filename = pathname;
+    }
+
+    /**
      * Returns a file pointer to associated file
-     * 
+     *
      * @return file pointer
      */
     public File getFile() {
@@ -65,6 +63,7 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
 
     /**
      * Returns the leading number of menu item.
+     *
      * @return leading number
      */
     public int getIndex() {
@@ -73,6 +72,7 @@ public class JMenuItemLastOpenedFile extends JMenuItem {
 
     /**
      * Sets the leading number.
+     *
      * @param index leading number
      */
     public void setIndex(int index) {

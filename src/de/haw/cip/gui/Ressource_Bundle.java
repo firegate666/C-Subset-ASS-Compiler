@@ -5,18 +5,18 @@ import java.util.ResourceBundle;
 
 public class Ressource_Bundle {
 
-	private static final String BUNDLE_NAME = "de.haw.cip.gui.cipwindow"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME = "de.haw.cip.gui.cipwindow"; //$NON-NLS-1$
 
-	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
+    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 
-	private Ressource_Bundle() {
-	}
+    private Ressource_Bundle() {
+    }
 
-	public static String getString(String key) {
-		try {
-			return RESOURCE_BUNDLE.getString(key);
-		} catch (MissingResourceException e) {
-			return '!' + key + '!';
-		}
-	}
+    public static String getString(String key) {
+        try {
+            return RESOURCE_BUNDLE.getString(key);
+        } catch (MissingResourceException e) {
+            return '!' + key + '!';
+        }
+    }
 }

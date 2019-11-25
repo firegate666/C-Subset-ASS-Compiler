@@ -4,66 +4,67 @@ import java.util.Vector;
 
 public class StringList {
 
-	private Vector fCollection;
+    private Vector fCollection;
 
-	public boolean add(String string) {
-		return fCollection.add(string);
-	}
+    public StringList() {
+        fCollection = new Vector();
+    }
 
-	public boolean add(Object object) {
-		return add(object.toString());
-	}
+    public StringList(int initialCapacity) {
+        fCollection = new Vector(initialCapacity);
+    }
 
-	public boolean addAll(StringList items) {
-		boolean flag = true;
-		for (int i = 0; i < items.size(); i++) {
-			flag = add(items.get(i)) && flag;
-		}
-		return flag;
-	}
+    public StringList(int initialCapacity, int capacityIncrement) {
+        fCollection = new Vector(initialCapacity, capacityIncrement);
+    }
 
-	public boolean addAll(Vector items) {
-		boolean flag = true;
-		for (int i = 0; i < items.size(); i++) {
-			flag = add(items.get(i).toString()) && flag;
-		}
-		return flag;
-	}
+    public boolean add(String string) {
+        return fCollection.add(string);
+    }
 
-	public void removeAll() {
+    public boolean add(Object object) {
+        return add(object.toString());
+    }
 
-		fCollection.removeAllElements();
+    public boolean addAll(StringList items) {
+        boolean flag = true;
+        for (int i = 0; i < items.size(); i++) {
+            flag = add(items.get(i)) && flag;
+        }
+        return flag;
+    }
 
-	}
-	public void add(int pos, String s) {
-		fCollection.add(pos, s);
-	}
+    public boolean addAll(Vector items) {
+        boolean flag = true;
+        for (int i = 0; i < items.size(); i++) {
+            flag = add(items.get(i).toString()) && flag;
+        }
+        return flag;
+    }
 
-	public int size() {
-		return fCollection.size();
-	}
+    public void removeAll() {
 
-	public String get(int pos) {
-		return (String) fCollection.get(pos);
-	}
+        fCollection.removeAllElements();
 
-	public String lastElement() {
-		return (String) fCollection.lastElement();
-	}
+    }
 
-	public String firstElement() {
-		return (String) fCollection.firstElement();
-	}
+    public void add(int pos, String s) {
+        fCollection.add(pos, s);
+    }
 
-	public StringList() {
-		fCollection = new Vector();
-	}
+    public int size() {
+        return fCollection.size();
+    }
 
-	public StringList(int initialCapacity) {
-		fCollection = new Vector(initialCapacity);
-	}
+    public String get(int pos) {
+        return (String) fCollection.get(pos);
+    }
 
-	public StringList(int initialCapacity, int capacityIncrement) {
-		fCollection = new Vector(initialCapacity, capacityIncrement);
-	}
+    public String lastElement() {
+        return (String) fCollection.lastElement();
+    }
+
+    public String firstElement() {
+        return (String) fCollection.firstElement();
+    }
 }

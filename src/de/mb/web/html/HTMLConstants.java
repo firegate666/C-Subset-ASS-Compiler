@@ -1,10 +1,10 @@
 package de.mb.web.html;
 
 /**
- *  <code>HTMLConstants</code> supplies with needed HTML constants such as national character.
+ * <code>HTMLConstants</code> supplies with needed HTML constants such as national character.
  *
- * @author     mb
- * @created    December 11, 2001
+ * @author mb
+ * @created December 11, 2001
  */
 public final class HTMLConstants {
     public final static String FORM_POST = "post";

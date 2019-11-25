@@ -1,11 +1,10 @@
 package de.mb.swing;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
 /**
  * @author Marco Behnke
- *
  */
 public class JStatusBar extends JPanel {
 

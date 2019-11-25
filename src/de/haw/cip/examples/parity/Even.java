@@ -4,36 +4,37 @@ import de.haw.cip.util.Prt;
 
 public final class Even extends State { // Gerader Paritaet
 
-	private static Even handleVar = null;
-	// Priv. Konstruktor gegen externe Objekt-Erzeugung
-	private Even() {
-	}
+    private static Even handleVar = null;
 
-	static Even handle() {
-		// Erzeugung der einzigen Instanz
-		if (handleVar == null) {
-			handleVar = new Even();
-			Prt.ln("\nEven-Zustand erzeugt !!!\n");
-		}
-		// Liefert globalen Zugriffspunkt
-		return handleVar;
-	}
+    // Priv. Konstruktor gegen externe Objekt-Erzeugung
+    private Even() {
+    }
 
-	@Override
-	void acceptZero(Automaton a) {
-		store(a, '0');
-	}
+    static Even handle() {
+        // Erzeugung der einzigen Instanz
+        if (handleVar == null) {
+            handleVar = new Even();
+            Prt.ln("\nEven-Zustand erzeugt !!!\n");
+        }
+        // Liefert globalen Zugriffspunkt
+        return handleVar;
+    }
 
-	@Override
-	void acceptOne(Automaton a) {
-		store(a, '1');
-		changeState(a, Odd.handle());
-	}
+    @Override
+    void acceptZero(Automaton a) {
+        store(a, '0');
+    }
 
-	@Override
-	void acceptEtx(Automaton a) {
-		restore(a, "Paritaet gerade..");
+    @Override
+    void acceptOne(Automaton a) {
+        store(a, '1');
+        changeState(a, Odd.handle());
+    }
 
-	}
+    @Override
+    void acceptEtx(Automaton a) {
+        restore(a, "Paritaet gerade..");
+
+    }
 
 }

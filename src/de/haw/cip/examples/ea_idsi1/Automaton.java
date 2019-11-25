@@ -1,149 +1,147 @@
 package de.haw.cip.examples.ea_idsi1;
 
+import de.haw.cip.util.Prt;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
-import de.haw.cip.util.Prt;
-
 public class Automaton { // Der IDSI-Automat
 
-	private char actChar = ' ';
+    private char actChar = ' ';
 
-	private LsdClass actClass = null; // (1)
+    private LsdClass actClass = null; // (1)
 
-	private State actState = null;
-	private String name = "noName";
-	private ArrayList buffer = new ArrayList();
+    private State actState = null;
+    private String name = "noName";
+    private ArrayList buffer = new ArrayList();
 
-	public String getName() {
-		return name;
-	}
+    public Automaton(String n) { // Init auf Anfangszustand
+        // => Erzeugung des Anfangszustandes
+        actState = Other.handle();
+        name = n;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Automaton(String n) { // Init auf Anfangszustand 
-		// => Erzeugung des Anfangszustandes      
-		actState = Other.handle();
-		name = n;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	final static class LsdClass {
+    public void accept(String actString) {
 
-		// LsdClass ist eine innere Klasse des Automaten  
+        Prt.ln("Eingabe: \"" + actString + "\"\n");
 
-		private int value; // ungenutzte int-Repraesentation
+        for (int i = 0; i < actString.length(); i++) {
 
-		public final int toInt() {
-			return value;
-		}
+            actChar = actString.charAt(i);
 
-		// privater Konstruktor 
-		// verhindert jede Erzeugung von Elementen von aussen
-		private LsdClass(int v) {
-			value = v;
-		}
+            // Klassifizierung des aktuellen Zeichens
+            actClass = LsdClass.arr[actChar];
 
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
+            // Leider kein switch moeglich
 
-		// Klassifizierung der ersten 128 Zeichen mittels arr
-		public final static LsdClass[] arr = new LsdClass[128];
+            if (actClass == LsdClass.OTHER)
+                actState.acceptOther(this, actChar);
+            else if (actClass == LsdClass.LETTER)
+                actState.acceptLetter(this, actChar);
+            else if (actClass == LsdClass.SIGN)
+                actState.acceptSign(this, actChar);
+            else if (actClass == LsdClass.DIGIT)
+                actState.acceptDigit(this, actChar);
 
-		public final static LsdClass // Erzeugung der einzig
-			OTHER = new LsdClass(0), // moeglichen Objekte
-		LETTER = new LsdClass(1), // von lsdClass
-	SIGN = new LsdClass(2), DIGIT = new LsdClass(3), ETX = new LsdClass(4);
+            else
+                Prt.ln("LsdClass-Error");
 
-		// Zuordnung Zeichen  Klasse
+        } // End for
 
-		static { // Static Block, siehe Kap. 4.4.4
-			char c;
-			for (c = 0; c < 128; ++c)
-				arr[c] = OTHER;
-			for (c = '0'; c <= '9'; ++c)
-				arr[c] = DIGIT;
-			for (c = 'A'; c <= 'Z'; ++c)
-				arr[c] = LETTER;
-			for (c = 'a'; c <= 'z'; ++c)
-				arr[c] = LETTER;
-			arr['+'] = SIGN;
-			arr['-'] = SIGN;
-			arr[0] = ETX; // ETX = End Of Text
+        actState.acceptOther(this, ' ');
+        actState = Other.handle(); // Zustand = Anfangszustand !
 
-		} // End static Initialisation
+    } // End acceptString()
 
-	} // End final class LsdClass
+    public void changeState(State newState) {
+        // Aktualisierung des Zustands
+        actState = newState;
+    }
 
-	public void accept(String actString) {
+    public void store(char ch) {
+        buffer.add(new Character(ch));
+        // Prt.ln(buffer);
+    }
 
-		Prt.ln("Eingabe: \"" + actString + "\"\n");
+    public void restore(char ch) {
+        // ch ignored
+        Iterator it = buffer.iterator();
+        while (it.hasNext())
+            Prt.st(it.next().toString());
+        Prt.ln();
+        buffer.clear();
+        Prt.ln("!!!");
+    }
 
-		for (int i = 0; i < actString.length(); i++) {
+    public void restoreAndStore(char ch) {
+        restore(ch);
+        store(ch);//buffer.add(new Character(ch));
+    }
 
-			actChar = actString.charAt(i);
+    public void reset(char ch) {
+        // ch ignored
+        buffer.clear();
+    }
 
-			// Klassifizierung des aktuellen Zeichens
-			actClass = LsdClass.arr[actChar];
+    public void resetAndStore(char ch) {
+        reset(ch);//buffer.add(new Character(ch));
+        store(ch);
+    }
 
-			// Leider kein switch moeglich    
+    final static class LsdClass {
 
-			if (actClass == LsdClass.OTHER)
-				actState.acceptOther(this, actChar);
-			else if (actClass == LsdClass.LETTER)
-				actState.acceptLetter(this, actChar);
-			else if (actClass == LsdClass.SIGN)
-				actState.acceptSign(this, actChar);
-			else if (actClass == LsdClass.DIGIT)
-				actState.acceptDigit(this, actChar);
+        // LsdClass ist eine innere Klasse des Automaten
 
-			else
-				Prt.ln("LsdClass-Error");
+        // Klassifizierung der ersten 128 Zeichen mittels arr
+        public final static LsdClass[] arr = new LsdClass[128];
+        public final static LsdClass // Erzeugung der einzig
+                OTHER = new LsdClass(0), // moeglichen Objekte
+                LETTER = new LsdClass(1), // von lsdClass
+                SIGN = new LsdClass(2), DIGIT = new LsdClass(3), ETX = new LsdClass(4);
 
-		} // End for
+        static { // Static Block, siehe Kap. 4.4.4
+            char c;
+            for (c = 0; c < 128; ++c)
+                arr[c] = OTHER;
+            for (c = '0'; c <= '9'; ++c)
+                arr[c] = DIGIT;
+            for (c = 'A'; c <= 'Z'; ++c)
+                arr[c] = LETTER;
+            for (c = 'a'; c <= 'z'; ++c)
+                arr[c] = LETTER;
+            arr['+'] = SIGN;
+            arr['-'] = SIGN;
+            arr[0] = ETX; // ETX = End Of Text
 
-		actState.acceptOther(this, ' ');
-		actState = Other.handle(); // Zustand = Anfangszustand !
+        } // End static Initialisation
 
-	} // End acceptString()
+        private int value; // ungenutzte int-Repraesentation
 
-	public void changeState(State newState) {
-		// Aktualisierung des Zustands
-		actState = newState;
-	}
+        // privater Konstruktor
+        // verhindert jede Erzeugung von Elementen von aussen
+        private LsdClass(int v) {
+            value = v;
+        }
 
-	public void store(char ch) {
-		buffer.add(new Character(ch));
-		// Prt.ln(buffer);
-	}
+        public final int toInt() {
+            return value;
+        }
 
-	public void restore(char ch) {
-		// ch ignored            
-		Iterator it = buffer.iterator();
-		while (it.hasNext())
-			Prt.st(it.next().toString());
-		Prt.ln();
-		buffer.clear();
-		Prt.ln("!!!");
-	}
+        // Zuordnung Zeichen  Klasse
 
-	public void restoreAndStore(char ch) {
-		restore(ch);
-		store(ch);//buffer.add(new Character(ch));
-	}
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
 
-	public void reset(char ch) {
-		// ch ignored            
-		buffer.clear();
-	}
-
-	public void resetAndStore(char ch) {
-		reset(ch);//buffer.add(new Character(ch));
-		store(ch);
-	}
+    } // End final class LsdClass
 
 }

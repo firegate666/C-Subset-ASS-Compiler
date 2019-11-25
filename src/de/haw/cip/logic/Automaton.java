@@ -9,69 +9,71 @@ import java.util.Iterator;
 
 public abstract class Automaton {
 
-	protected char actChar = ' ';
-	private ArrayList states=new ArrayList();
-	
-	protected State actState = null;
-	protected String name = "noName";
-	protected ArrayList buffer = new ArrayList();
-	
-	public void resetScanner() {
-		Iterator i = states.iterator();
-		while(i.hasNext() )
-			((State)i.next()).destroy();
-		buffer.clear();
-		actChar = ' ';
-		actState = null;
-	}
+    protected char actChar = ' ';
+    protected State actState = null;
+    protected String name = "noName";
+    protected ArrayList buffer = new ArrayList();
+    private ArrayList states = new ArrayList();
 
-	public String getBufferCopy() {
-		String result = "";
-		Iterator it = buffer.iterator();
-		while (it.hasNext()) result += it.next().toString();
-		return result;
-	}
+    public Automaton(String n) {
+        name = n;
+    } // Init auf Anfangszustand
 
-	public Automaton(String n) { name = n;} // Init auf Anfangszustand 
+    public Automaton() {
+        this("no name given");
+    }
 
-   	public Automaton(){  this("no name given");}
+    public void resetScanner() {
+        Iterator i = states.iterator();
+        while (i.hasNext())
+            ((State) i.next()).destroy();
+        buffer.clear();
+        actChar = ' ';
+        actState = null;
+    }
 
-		
-	public abstract void accept(String actString) throws CompilerErrorException; 
+    public String getBufferCopy() {
+        String result = "";
+        Iterator it = buffer.iterator();
+        while (it.hasNext()) result += it.next().toString();
+        return result;
+    }
 
-	
-	public void changeState(State newState) {
-		// Aktualisierung des Zustands
-		actState = newState;
-		if(!states.contains(newState ))
-			states.add(newState );
-	}
+    public abstract void accept(String actString) throws CompilerErrorException;
 
-	public void store(char ch) {
-		buffer.add(new Character(ch));
-	}
 
-	public void restore(char ch) {
-		Iterator it = buffer.iterator();
-		Prt.st("TOKEN Found: ");
-		while (it.hasNext())
-		Prt.st(it.next().toString());
-		Prt.ln();
-		reset(ch);
-	}
+    public void changeState(State newState) {
+        // Aktualisierung des Zustands
+        actState = newState;
+        if (!states.contains(newState))
+            states.add(newState);
+    }
 
-	public void restoreAndStore(char ch) {
-		restore(ch);
-		store(ch);
-	}
+    public void store(char ch) {
+        buffer.add(new Character(ch));
+    }
 
-	public void reset(char ch) {
-		buffer.clear();
-	}
+    public void restore(char ch) {
+        Iterator it = buffer.iterator();
+        Prt.st("TOKEN Found: ");
+        while (it.hasNext())
+            Prt.st(it.next().toString());
+        Prt.ln();
+        reset(ch);
+    }
 
-	public void resetAndStore(char ch) {
-		reset(ch);
-		store(ch);
-	}
+    public void restoreAndStore(char ch) {
+        restore(ch);
+        store(ch);
+    }
+
+    public void reset(char ch) {
+        buffer.clear();
+    }
+
+    public void resetAndStore(char ch) {
+        reset(ch);
+        store(ch);
+    }
 
 }

@@ -1,38 +1,43 @@
 package de.mb.swing;
 
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-
 /**
  * @author Marco Behnke
- *
  */
 public class SwingTest {
 
     public static void main(String[] args) {
         class ClickButtonListener implements MouseListener {
             private JNumberedTextArea _n;
+
             public ClickButtonListener(JNumberedTextArea n) {
                 _n = n;
             }
-			@Override
+
+            @Override
             public void mouseClicked(MouseEvent e) {
                 _n.switchVisibleLineCount();
             }
-			@Override
-            public void mouseEntered(MouseEvent e) {}
-			@Override
-            public void mouseExited(MouseEvent e) {}
-			@Override
-            public void mousePressed(MouseEvent e) {}
-			@Override
-            public void mouseReleased(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
         }
         JDefaultFrame jdf = new JDefaultFrame();
         jdf.getContentPane().setLayout(new BorderLayout());

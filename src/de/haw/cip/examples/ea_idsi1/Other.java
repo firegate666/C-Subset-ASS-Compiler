@@ -7,43 +7,44 @@ import de.haw.cip.util.Prt;
 
 public final class Other extends State {
 
-	private static Other handleVar = null;
-	// Priv. Konstruktor gegen externe Objekt-Erzeugung
-	private Other() {
-	}
+    private static Other handleVar = null;
 
-	public static Other handle() {
-		// Erzeugung der einzigen Instanz
-		if (handleVar == null) {
-			handleVar = new Other();
-			Prt.ln("\nOther-Zustand erzeugt !!!\n");
-		}
-		// Liefert globalen Zugriffspunkt
-		return handleVar;
-	}
+    // Priv. Konstruktor gegen externe Objekt-Erzeugung
+    private Other() {
+    }
 
-	@Override
-	protected void acceptDigit(Automaton a, char ch) {
-		store(a, ch);
-		changeState(a, Digit.handle());
-	}
+    public static Other handle() {
+        // Erzeugung der einzigen Instanz
+        if (handleVar == null) {
+            handleVar = new Other();
+            Prt.ln("\nOther-Zustand erzeugt !!!\n");
+        }
+        // Liefert globalen Zugriffspunkt
+        return handleVar;
+    }
 
-	@Override
-	protected void acceptLetter(Automaton a, char ch) {
-		store(a, ch);
-		//changeState(a, Letter.handle());
-	}
+    @Override
+    protected void acceptDigit(Automaton a, char ch) {
+        store(a, ch);
+        changeState(a, Digit.handle());
+    }
 
-	@Override
-	protected void acceptOther(Automaton a, char ch) {
-		// Nothing to do
-		// No changeState
-	}
+    @Override
+    protected void acceptLetter(Automaton a, char ch) {
+        store(a, ch);
+        //changeState(a, Letter.handle());
+    }
 
-	@Override
-	protected void acceptSign(Automaton a, char ch) {
-		store(a, ch);
-		changeState(a, Sign.handle());
-	}
+    @Override
+    protected void acceptOther(Automaton a, char ch) {
+        // Nothing to do
+        // No changeState
+    }
+
+    @Override
+    protected void acceptSign(Automaton a, char ch) {
+        store(a, ch);
+        changeState(a, Sign.handle());
+    }
 
 }

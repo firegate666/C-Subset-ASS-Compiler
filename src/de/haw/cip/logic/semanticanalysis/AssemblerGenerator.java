@@ -8,44 +8,45 @@ import de.mk.exception.CompilerErrorException;
 
 /**
  * @author behnke_m
- *
+ * <p>
  * To change this generated comment edit the template variable "typecomment":
  * Window>Preferences>Java>Templates.
  * To enable and disable the creation of type comments go to
  * Window>Preferences>Java>Code Generation.
  */
-public class AssemblerGenerator implements Singleton{
+public class AssemblerGenerator implements Singleton {
 
-	private static AssemblerGenerator handleVar =null;
-	private CIPWindow app;
-	
-	public static AssemblerGenerator handle(CIPWindow app) {
-		if(handleVar==null) {
-			handleVar = new AssemblerGenerator(app);
-		}
-		return handleVar;
-	}
-	
-	public CIPWindow getApp() {
-		return app;
-	}
+    private static AssemblerGenerator handleVar = null;
+    private CIPWindow app;
 
-	public String getAsmCode(String ptf) throws InstanceNotInitializedException {
-		CodeBuilder cb = new CodeBuilder(ptf,app);
-		return cb.getAsm();
-	}
+    private AssemblerGenerator(CIPWindow app) {
+        this.app = app;
+    }
 
-	public String getAsmPrinfDeclaration() {
-		DeclarationBuilder db = DeclarationBuilder.handle();
-		return db.getPrintfDeclare();
-	}
+    public static AssemblerGenerator handle(CIPWindow app) {
+        if (handleVar == null) {
+            handleVar = new AssemblerGenerator(app);
+        }
+        return handleVar;
+    }
 
-	public String getAsmVarDeclaration(Symboltable symbols)   throws CompilerErrorException {
-		DeclarationBuilder db = DeclarationBuilder.handle();
-		return db.buildVarDeclare( symbols);
-	} 
-	private AssemblerGenerator(CIPWindow app) {
-			this.app = app;
-	}
+    public CIPWindow getApp() {
+        return app;
+    }
+
+    public String getAsmCode(String ptf) throws InstanceNotInitializedException {
+        CodeBuilder cb = new CodeBuilder(ptf, app);
+        return cb.getAsm();
+    }
+
+    public String getAsmPrinfDeclaration() {
+        DeclarationBuilder db = DeclarationBuilder.handle();
+        return db.getPrintfDeclare();
+    }
+
+    public String getAsmVarDeclaration(Symboltable symbols) throws CompilerErrorException {
+        DeclarationBuilder db = DeclarationBuilder.handle();
+        return db.buildVarDeclare(symbols);
+    }
 
 }

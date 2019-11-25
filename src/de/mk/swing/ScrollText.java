@@ -1,11 +1,10 @@
 package de.mk.swing;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 /**
  * @author Martin Koose
- *
+ * <p>
  * To change this generated comment edit the template variable "typecomment":
  * Window>Preferences>Java>Templates.
  * To enable and disable the creation of type comments go to
@@ -13,41 +12,42 @@ import javax.swing.JTextArea;
  */
 public class ScrollText extends JScrollPane {
 
-	private JTextArea text;
-	private JScrollPane scroll;
+    private JTextArea text;
+    private JScrollPane scroll;
 
-	public ScrollText() {
+    public ScrollText() {
 
-		this.initialize("");
-	}
+        this.initialize("");
+    }
 
-	public ScrollText(String text) {
-		this.initialize(text);
-	}
+    public ScrollText(String text) {
+        this.initialize(text);
+    }
 
-	public void setText(String string) {
-		text.setText(string);
-	}
-	
-	public int lines() {
-		return text.getLineCount();
-	}
-	
-	public String getText() {
-		return text.getText();	
-	}
+    public int lines() {
+        return text.getLineCount();
+    }
 
-	private void initialize(String txt) {
+    public String getText() {
+        return text.getText();
+    }
 
-		text = new JTextArea(8, 40);
-		this.setText(txt);
+    public void setText(String string) {
+        text.setText(string);
+    }
 
-		scroll = new JScrollPane(text);
-		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-	}
-	public JScrollPane getPane() {
-		return scroll;
+    private void initialize(String txt) {
 
-	}
+        text = new JTextArea(8, 40);
+        this.setText(txt);
+
+        scroll = new JScrollPane(text);
+        scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    }
+
+    public JScrollPane getPane() {
+        return scroll;
+
+    }
 }
