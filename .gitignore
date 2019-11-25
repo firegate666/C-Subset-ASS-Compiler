@@ -3,4 +3,4 @@ templates
 build/
 build.xml
 nbproject
-
+.idea/
